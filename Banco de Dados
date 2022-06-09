@@ -1,0 +1,80 @@
+create database ProjetoPi;
+
+use  ProjetoPi;
+
+
+DROP TABLE IF EXISTS `login`;
+
+CREATE TABLE `login` (
+  `idUsuario` int NOT NULL AUTO_INCREMENT,
+  `nome` char(50)  NOT NULL,
+  `senha` char(50)  NOT NULL,
+  `email` char(60) Not NULL,
+  `pontuacaoTotal` real DEFAULT 0.0,
+  PRIMARY KEY (`idUsuario`));
+
+--
+-- Dumping data for table `login`
+-- 
+
+LOCK TABLES `login` WRITE;
+
+INSERT INTO `login` VALUES (1,'admin','admin','admin', null);
+
+
+UNLOCK TABLES;
+
+DROP TABLE IF EXISTS `perguntas`;
+
+CREATE TABLE `perguntas` (
+  `idPergunta` char(5) NOT NULL,
+  `Pergunta` text NOT NULL,
+  PRIMARY KEY (`idPergunta`),
+  UNIQUE KEY `idPergunta` (`idPergunta`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+--
+-- Dumping data for table `perguntas`
+--
+
+LOCK TABLES `perguntas` WRITE;
+
+INSERT INTO `perguntas` VALUES ('D1','Explique os princípios da orientação a objeto?'),('D2','O que significa a sigla CRUD? Que é usada em operações CRUD.'),('D3','Qual é uma das principais características de um Sistema gerenciador de banco de dados (SGBD)?'),('D4','Escolha a alternativa que complete essa frase. Uma classe pode fazer a definição de elementos (atributos, métodos) que sejam comuns a diversas outras classes e então, por meio da _____, elas obtêm uma cópia desses elementos sem ter que defini-los novamente.'),('D5','O método showInputDialog sempre devolve uma?'),('F1','Quais são os IDES do Java? '),('F2','O que é uma class?'),('F3','Para quaisquer nomes, respeitamos o padrão conhecido como?'),('F4','Uma boa prática de programação é?'),('F5','Métodos sempre têm parênteses para parâmetros, mesmo que fiquem vazios?'),('M1','Que tipo de estrutura o comando Switch faz parte?'),('M2','Qual o uso do comando break em Java?'),('M3','Quantos comandos de tomadas de decisões existem no Java'),('M4','O que são strings?'),('M5','Quantos comandos de laços de repetições existem no Java?');
+
+UNLOCK TABLES;
+
+
+Select * from perguntas;
+--
+-- Table structure for table `respostas`
+--
+
+DROP TABLE IF EXISTS `respostas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `respostas` (
+  `idResposta` char(5) not null, 
+  `RespA` tinytext,
+  `RespB` tinytext,
+  `RespC` tinytext,
+  `RespD` tinytext,
+  `RespE` tinytext,
+  
+  `idPergunta` char(5) DEFAULT NULL,
+  PRIMARY KEY (`idResposta`),
+  KEY `idPergunta` (`idPergunta`),
+  CONSTRAINT `respostas_ibfk_1` FOREIGN KEY (`idPergunta`) REFERENCES `perguntas` (`idPergunta`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+--
+-- Dumping data for table `respostas`
+--
+
+LOCK TABLES `respostas` WRITE;
+
+INSERT INTO `respostas` VALUES ('RD1','Herança dada pela classe encapsulada','Abstração, encapsulamento e herança são os princípios da orientação a objeto','Abstração, encapsulamento, herança e polimorfismo são os princípios da orientação a objeto.','Encapsulamento, string theory e mainframe adaption são os princípios da orientação a objeto','Herança e abstração são os princípios da orientação a objeto','D1'),('RD2','Construct, Read, Update e Delete','Convey, Rat, Update e Delete','Create, Read, unlearn e Destroy','Create, Retouch, Update e Delete','Create, Read, Update e Delete.','D2'),('RD3','Simplificar a implementação das operações CRUD','Deletar e fazer um update dos dados presentes dentro do banco de dados','Fazer com que o banco de dados tenha uma taxa de updates maiores e com que ele consiga rodar mais rapidamente','Comparar todos os dados que estão presentes dentro do banco de dados e verificar se não estão afetando as operações CRUD','Utilizar as operações CRUD ','D3'),('RD4','Java','Mainframe','String','Herança','Class','D4'),('RD5','Classe','String','Resultado','Nada','Uma mensagem','D5'),('RF1','JBlueG','Java','Mainframere','Eclipse e Netbeans','String','F1'),('RF2','Lugar onde o professor dá uma aula','Uma classe é um elemento do código Java que utilizamos somente em lugares específicos do código para que aumente a velocidade de atualização do programa','Uma classe é um elemento do código que iremos utilizar para armazenar as variáveis que iremos utilizar em Java','Uma class é um elemento do código Java que utilizamos para representar as Strings do nosso programa de Java','Uma classe é um elemento do código Java que utilizamos para representar objetos do mundo real','F2'),('RF3','CamelCase','ElephantCase','TigerCase','DonkeyCase','RiverCase','F3'),('RF4','Sempre iniciar o programa usando um laço de repetição','Ligar as Strings para fazer o programa de Java conseguir rodar com uma taxa maior de atualização','Indentar a classe usando o CamelCase','Fazer os programas rodarem sem precisarem serem indentados','Indentar sempre programas','F4'),('RF5','Nunca se precisa de parêntese em um programa Java','Parâmetros nunca irão necessitar de algo específico','O método irá precisar de pontos além de parênteses ','Falso','Verdadeiro','F5'),('RM1','Uma estrutura de repetição','Uma estrutura de troca','Uma estrutura de finalidade','Uma estrutura de alternativa','Uma estrutura de decisões','M1'),('RM2','O comando break é usado para acabar com o programa','O comando break é usado para quebrar as falhas','O comando break é usado para facilitar a existência de alguns loops e quebrar com algumas falhas existentes dentro do sistema','O comando break é usado para sair de loops','O comando break é usado para criar loops e continuar com a sequência do programa','M2'),('RM3','Nenhuma','2','1','5','4','M3'),('RM4','Strings são códigos usados para conseguirmos fazer o programa de Java rodar','Strings são linhas','Strings estão dentro da classe do programa de Java','String é uma forma de classificar varíaveis em que atribui-se números','Strings são objetos que manipulamos utilizando variáveis de referência','M4'),('RM5','6','Nenhuma','2','1','3','M5');
+
+UNLOCK TABLES;
+
