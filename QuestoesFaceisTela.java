@@ -2,59 +2,59 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Jogo;
+package com.mycompany;
+
+
+
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
-import javax.swing.JRadioButton;
-import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author cadub
  */
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 public class QuestoesFaceisTela extends javax.swing.JFrame {
-    
+
+   
+    String[] questions = {"Quais são os IDES do Java?","O que é uma class?", "Para quaisquer nomes, respeitamos o padrão conhecido como?", "Uma boa prática de programação é?", "Métodos sempre têm parênteses para parâmetros, mesmo que fiquem vazios?"};
+    String[] [] options ={{"JBlue", "Mainframe e Classe", "Visual Studio","Eclipse e Netbeans","JavaScript", "D"}, {"Lugar onde o professor dá uma aula","Uma class é um elemento do código Java que utilizamos para representar as Strings do nosso programa de Java","Uma classe é um elemento do código que iremos utilizar para armazenar as variáveis que iremos utilizar em Java","Uma classe é um elemento do código Java que utilizamos somente em lugares específicos do código para que aumente a velocidade de atualização do programa","Uma classe é um elemento do código Java que utilizamos para representar objetos do mundo real","E"}, {"CamelCase","Elephant Case","TigerCase","DonkeyCase","RiverCase", "A"},{"Sempre iniciar o programa usando um laço de repetição","Ligar as Strings para fazer o programa de Java conseguir rodar com uma taxa maior de atualização","Indentrar a classe utilizando o CamelCase","Fazer os programas rodarem sem precisarem serem indentados","Indentar sempre programas", "C"},{"Nunca se precisa de parêntese em um programa Java","Parâmetros nunca irão necessitar de algo especifíco","O método irá precisar de pontos além de parênteses","Falso","Verdadeiro","D"}};
+    int index = 0, correct = 0;
+    int valor = 1;
+    int numeroquestao = 2;
+    List <Pergunta> perguntas;
     
     ButtonGroup bg = new ButtonGroup();
-    
-    List <Pergunta> perguntas;
-   
     
     public Timer tempo;
     public int segundos = 1;
     public int minutos = 0;
-  
-    int index = 0;
-    int Pontuacao = 0;
-    int numeroQuestao = 2;
     
-    public QuestoesFaceisTela() throws Exception {
+          
+    
+    public QuestoesFaceisTela(){
         initComponents();
         
-        perguntas = new QuestoesDAOFacil().obterPerguntas();
         
-        Enunciado.setText(perguntas.get(0).getEnunciado());
-        txtAltA.setText(perguntas.get(0).getAlternativaA());
-        txtAltB.setText(perguntas.get(0).getAlternativaB());
-        txtAltC.setText(perguntas.get(0).getAlternativaC());
-        txtAltD.setText(perguntas.get(0).getAlternativaD());
-        txtAltE.setText(perguntas.get(0).getAlternativaE());
-        txtRespostaCorreta.setText(perguntas.get(0).getRespostaCorreta());
+        bg.add(AlternativaA);
+        bg.add(AlternativaB);
+        bg.add(AlternativaC);
+        bg.add(AlternativaD);
+        bg.add(AlternativaE);
         
         tempo = new Timer(1000, acao);
-
+        
     }
-    
-    
+   
    public ActionListener acao = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -62,6 +62,7 @@ public class QuestoesFaceisTela extends javax.swing.JFrame {
             txtSegundos.setText(String.valueOf(segundos));
             segundos = segundos + 1;
             if (segundos == 60) {
+                 
                 minutos = minutos + 1;
                 txtMinutos.setText(String.valueOf(minutos));
                 segundos = 0;
@@ -70,9 +71,9 @@ public class QuestoesFaceisTela extends javax.swing.JFrame {
                 ResultadoFacilTela TRF = new ResultadoFacilTela();
                 TRF.setVisible(true);
                 
-                ResultadoFacilTela.txtPontuacao.setText("Sua Pontuação: " + Pontuacao + " / " + perguntas.size());
+                ResultadoFacilTela.txtPontuacao.setText("Sua Pontuação: " + valor + " / " + "15");
                 ResultadoFacilTela.txtConclusao.setText("Acabou o tempo. Essa foi quase lá!!");
-                
+                ResultadoFacilTela.txtPontuacao.setText("Sua Pontuação: " + correct + " / " + questions.length);
                 
                 String tempoMinutos = txtMinutos.getText();
                 ResultadoFacilTela.txtTempo.setText("Seu tempo: " + tempoMinutos);
@@ -80,55 +81,76 @@ public class QuestoesFaceisTela extends javax.swing.JFrame {
             
                 String tempoSegundos = txtSegundos.getText();
                 ResultadoFacilTela.txtTempoSegundos.setText(":" + tempoSegundos);
+                
                 tempo.stop();
             }
         
         }
     };
-   
-    public void getSelectedOption (JRadioButton Jrbtn) {
-        
-        if (Jrbtn.getText().equals(txtRespostaCorreta.getText())) {
-            Pontuacao++;
-            NumeroPontuacao.setText(String.valueOf(Pontuacao));
+    
+    public void getSelectedOption (JButton rbtn) {
+        System.out.println(rbtn.getText());
+        System.out.println(options[index][5]);
+        if(rbtn.getText().equals(options[index] [5])) {
+            correct++;
+            NumeroPontuacao.setText(String.valueOf(valor));
+            valor++;
         }
         index++;
-        enableRButtons(false);
+        enableButtons(false);
     }
     
-    public void enableRButtons (boolean yes_or_no) {
-        txtAltA.setEnabled(yes_or_no);
-        txtAltB.setEnabled(yes_or_no);
-        txtAltC.setEnabled(yes_or_no);
-        txtAltD.setEnabled(yes_or_no);
-        txtAltE.setEnabled(yes_or_no);
+    public void enableButtons (boolean yes_or_no) {
+        AlternativaA.setEnabled(yes_or_no);
+        AlternativaB.setEnabled(yes_or_no);
+        AlternativaC.setEnabled(yes_or_no);
+        AlternativaD.setEnabled(yes_or_no);
+        AlternativaE.setEnabled(yes_or_no);
         
         //limpar a seleção
         bg.clearSelection();
     }
     @SuppressWarnings("unchecked")
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        NomeDificuldade = new javax.swing.JLabel();
         CaixaParaEmail = new javax.swing.JLabel();
-        txtRespostaCorreta = new javax.swing.JLabel();
+        AlternativaA = new javax.swing.JButton();
+        AlternativaB = new javax.swing.JButton();
+        AlternativaC = new javax.swing.JButton();
+        AlternativaD = new javax.swing.JButton();
+        AlternativaE = new javax.swing.JButton();
+        txtAltB = new javax.swing.JLabel();
+        txtAltC = new javax.swing.JLabel();
+        txtAltD = new javax.swing.JLabel();
+        txtAltE = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         Enunciado = new javax.swing.JLabel();
-        txtAltA = new javax.swing.JRadioButton();
-        txtAltB = new javax.swing.JRadioButton();
-        txtAltC = new javax.swing.JRadioButton();
-        txtAltD = new javax.swing.JRadioButton();
-        txtAltE = new javax.swing.JRadioButton();
-        NumeroPontuacao = new javax.swing.JLabel();
-        txtSegundos = new javax.swing.JLabel();
-        txtMinutos = new javax.swing.JLabel();
-        NumeroQuestao = new javax.swing.JLabel();
-        LabelFacil = new javax.swing.JLabel();
+        txtAltA = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        NumeroPontuacao = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        NumeroQuestao = new javax.swing.JLabel();
+        txtMinutos = new javax.swing.JLabel();
+        txtSegundos = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
-        CaixaParaEmail.setText("jLabel1");
+        NomeDificuldade.setText("Fácil");
+
+        CaixaParaEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        CaixaParaEmail.setText("se não rodar é gay");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
         setUndecorated(true);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -136,138 +158,406 @@ public class QuestoesFaceisTela extends javax.swing.JFrame {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
             }
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Enunciado.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
-        Enunciado.setForeground(new java.awt.Color(255, 255, 255));
-        Enunciado.setText("A");
-        getContentPane().add(Enunciado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 1310, 40));
-
-        txtAltA.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        txtAltA.setForeground(new java.awt.Color(255, 255, 255));
-        txtAltA.setText(" jRadioButton1");
-        txtAltA.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\AlternativaA.png")); // NOI18N
-        txtAltA.addMouseListener(new java.awt.event.MouseAdapter() {
+        AlternativaA.setText("A");
+        AlternativaA.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtAltAMouseClicked(evt);
+                AlternativaAMouseClicked(evt);
             }
         });
-        txtAltA.addActionListener(new java.awt.event.ActionListener() {
+        AlternativaA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAltAActionPerformed(evt);
+                AlternativaAActionPerformed(evt);
             }
         });
-        getContentPane().add(txtAltA, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 1120, 60));
+        getContentPane().add(AlternativaA, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
 
-        txtAltB.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        txtAltB.setForeground(new java.awt.Color(255, 255, 255));
-        txtAltB.setText(" jRadioButton2");
-        txtAltB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(95, 84, 242), 3));
-        txtAltB.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\AlternativaB.png")); // NOI18N
-        txtAltB.addMouseListener(new java.awt.event.MouseAdapter() {
+        AlternativaB.setText("B");
+        AlternativaB.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtAltBMouseClicked(evt);
+                AlternativaBMouseClicked(evt);
             }
         });
-        txtAltB.addActionListener(new java.awt.event.ActionListener() {
+        AlternativaB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAltBActionPerformed(evt);
+                AlternativaBActionPerformed(evt);
             }
         });
-        getContentPane().add(txtAltB, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 1120, -1));
+        getContentPane().add(AlternativaB, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
 
-        txtAltC.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        txtAltC.setForeground(new java.awt.Color(255, 255, 255));
-        txtAltC.setText("  jRadioButton3");
-        txtAltC.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(95, 84, 242), 3));
-        txtAltC.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\AlternativaC.png")); // NOI18N
-        txtAltC.addMouseListener(new java.awt.event.MouseAdapter() {
+        AlternativaC.setText("C");
+        AlternativaC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtAltCMouseClicked(evt);
+                AlternativaCMouseClicked(evt);
             }
         });
-        txtAltC.addActionListener(new java.awt.event.ActionListener() {
+        AlternativaC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAltCActionPerformed(evt);
+                AlternativaCActionPerformed(evt);
             }
         });
-        getContentPane().add(txtAltC, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, 1140, 70));
+        getContentPane().add(AlternativaC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
 
-        txtAltD.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        txtAltD.setForeground(new java.awt.Color(255, 255, 255));
-        txtAltD.setText("  jRadioButton4");
-        txtAltD.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(95, 84, 242), 3));
-        txtAltD.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\AlternativaD.png")); // NOI18N
-        txtAltD.addMouseListener(new java.awt.event.MouseAdapter() {
+        AlternativaD.setText("D");
+        AlternativaD.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtAltDMouseClicked(evt);
+                AlternativaDMouseClicked(evt);
             }
         });
-        txtAltD.addActionListener(new java.awt.event.ActionListener() {
+        AlternativaD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAltDActionPerformed(evt);
+                AlternativaDActionPerformed(evt);
             }
         });
-        getContentPane().add(txtAltD, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 510, 1130, 60));
+        getContentPane().add(AlternativaD, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
 
-        txtAltE.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        txtAltE.setForeground(new java.awt.Color(255, 255, 255));
-        txtAltE.setText(" A");
-        txtAltE.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(95, 84, 242), 3));
-        txtAltE.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\AlternativaE.png")); // NOI18N
-        txtAltE.addMouseListener(new java.awt.event.MouseAdapter() {
+        AlternativaE.setText("E");
+        AlternativaE.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtAltEMouseClicked(evt);
+                AlternativaEMouseClicked(evt);
             }
         });
-        txtAltE.addActionListener(new java.awt.event.ActionListener() {
+        AlternativaE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAltEActionPerformed(evt);
+                AlternativaEActionPerformed(evt);
             }
         });
-        getContentPane().add(txtAltE, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 600, 1130, -1));
+        getContentPane().add(AlternativaE, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
 
-        NumeroPontuacao.setFont(new java.awt.Font("Eras Bold ITC", 1, 32)); // NOI18N
-        NumeroPontuacao.setForeground(new java.awt.Color(255, 255, 255));
+        txtAltB.setText("MainFrame e Classe");
+        getContentPane().add(txtAltB, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 870, 30));
+
+        txtAltC.setText("Visual Studio");
+        getContentPane().add(txtAltC, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 870, 30));
+
+        txtAltD.setText("Eclipse e Netbeans");
+        getContentPane().add(txtAltD, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 870, 30));
+
+        txtAltE.setText("Dr . JavaScript");
+        getContentPane().add(txtAltE, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, 850, 30));
+
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Enunciado.setFont(new java.awt.Font("Segoe UI", 1, 23)); // NOI18N
+        Enunciado.setText("Quais são os IDES do Java?  ");
+        Enunciado.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                EnunciadoComponentHidden(evt);
+            }
+        });
+        jPanel3.add(Enunciado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 960, 30));
+
+        txtAltA.setText("JBueG");
+        jPanel3.add(txtAltA, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 850, 30));
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 1010, 330));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\Icone Laranja Discite (2) (1).png")); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("MV Boli", 0, 30)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 102, 0));
+        jLabel2.setText("iscite");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 23)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 153, 51));
+        jLabel3.setText("Questão      -  Fácil");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 200, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 23)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 153, 255));
+        jLabel4.setText("Pontuação: ");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, -1, -1));
+
+        NumeroPontuacao.setFont(new java.awt.Font("Segoe UI", 0, 23)); // NOI18N
         NumeroPontuacao.setText("0");
-        getContentPane().add(NumeroPontuacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 50, 40, 40));
+        jPanel1.add(NumeroPontuacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 20, 40, 30));
 
-        txtSegundos.setFont(new java.awt.Font("Eras Bold ITC", 1, 32)); // NOI18N
-        txtSegundos.setForeground(new java.awt.Color(255, 255, 255));
-        txtSegundos.setText("0");
-        getContentPane().add(txtSegundos, new org.netbeans.lib.awtextra.AbsoluteConstraints(1300, 50, 70, 40));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 23)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 153, 255));
+        jLabel6.setText("Tempo:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 20, -1, -1));
 
-        txtMinutos.setFont(new java.awt.Font("Eras Bold ITC", 1, 32)); // NOI18N
-        txtMinutos.setForeground(new java.awt.Color(255, 255, 255));
-        txtMinutos.setText("0");
-        getContentPane().add(txtMinutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 50, 40, 40));
-
-        NumeroQuestao.setFont(new java.awt.Font("Segoe UI Black", 1, 32)); // NOI18N
-        NumeroQuestao.setForeground(new java.awt.Color(255, 255, 255));
+        NumeroQuestao.setFont(new java.awt.Font("Segoe UI", 1, 23)); // NOI18N
+        NumeroQuestao.setForeground(new java.awt.Color(255, 153, 51));
         NumeroQuestao.setText("1");
-        getContentPane().add(NumeroQuestao, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 50, -1, 40));
+        jPanel1.add(NumeroQuestao, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, -1, -1));
 
-        LabelFacil.setFont(new java.awt.Font("Eras Bold ITC", 1, 32)); // NOI18N
-        LabelFacil.setForeground(new java.awt.Color(255, 255, 255));
-        LabelFacil.setText("Fácil");
-        getContentPane().add(LabelFacil, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 50, -1, 50));
+        txtMinutos.setFont(new java.awt.Font("Segoe UI", 0, 23)); // NOI18N
+        txtMinutos.setText("0");
+        jPanel1.add(txtMinutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 20, 30, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\1253QUANTUMVM.UNRARMETRO_ckbnxvahp5f44!App\\Extracted\\Questões.png")); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        txtSegundos.setFont(new java.awt.Font("Segoe UI", 0, 23)); // NOI18N
+        txtSegundos.setText("0");
+        jPanel1.add(txtSegundos, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 20, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 23)); // NOI18N
+        jLabel5.setText(":");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 20, 10, -1));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\OneDrive\\Imagens\\Saved Pictures\\Azul Laranja.jpg")); // NOI18N
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 70));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, -1));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+    private void AlternativaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlternativaAActionPerformed
         // TODO add your handling code here:
+        getSelectedOption(AlternativaA);
+        
+    }//GEN-LAST:event_AlternativaAActionPerformed
+
+    private void AlternativaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlternativaBActionPerformed
+        // TODO add your handling code here:
+        getSelectedOption(AlternativaB);
+        
+    }//GEN-LAST:event_AlternativaBActionPerformed
+
+    private void AlternativaCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlternativaCActionPerformed
+        // TODO add your handling code here:
+        getSelectedOption(AlternativaC);
+    }//GEN-LAST:event_AlternativaCActionPerformed
+
+    private void AlternativaDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlternativaDActionPerformed
+        // TODO add your handling code here:
+        getSelectedOption(AlternativaD);
+    }//GEN-LAST:event_AlternativaDActionPerformed
+
+    private void AlternativaEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlternativaEActionPerformed
+        // TODO add your handling code here:
+        getSelectedOption(AlternativaE);
+        
        
-       
-    }//GEN-LAST:event_formWindowOpened
+    }//GEN-LAST:event_AlternativaEActionPerformed
+
+    private void AlternativaAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AlternativaAMouseClicked
+        // TODO add your handling code here:
+        NumeroQuestao.setText(String.valueOf(numeroquestao));
+        numeroquestao = numeroquestao + 1;
+        
+        if (index == questions.length) {
+            ResultadoFacilTela Tr = new ResultadoFacilTela();
+            Tr.setVisible(true);
+            
+           
+            ResultadoFacilTela.txtPontuacao.setText("Sua Pontuação: " + correct + " / " + questions.length);
+            ResultadoFacilTela.txtConclusao.setText("Voce concluiu o quiz de Nível Fácil!!");
+            
+            UsuarioLogado.usuario.setPontuacaoTotal(UsuarioLogado.usuario.getPontuacaoTotal() + valor);
+            
+            String tempoMinutos = txtMinutos.getText();
+            ResultadoFacilTela.txtTempo.setText("Seu tempo: " + tempoMinutos);
+            
+            
+            String tempoSegundos = txtSegundos.getText();
+            ResultadoFacilTela.txtTempoSegundos.setText(":" + tempoSegundos);
+            
+            this.dispose();
+        }
+
+        else  {
+            //liberar os radio buttons
+            enableButtons(true);
+            //mostrar a proxima questao
+            
+            
+            Enunciado.setText(questions[index]);
+            
+            txtAltA.setText (options[index] [0]);
+            txtAltB.setText (options[index] [1]);
+            txtAltC.setText (options[index] [2]);
+            txtAltD.setText (options[index] [3]);
+            txtAltE.setText (options[index] [4]);
+
+            if(index == questions.length-1){
+                System.out.println("Finalizado e Veja o Resultado");
+            }
+
+        }
+    }//GEN-LAST:event_AlternativaAMouseClicked
+
+    private void AlternativaBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AlternativaBMouseClicked
+        // TODO add your handling code here:
+        NumeroQuestao.setText(String.valueOf(numeroquestao));
+        numeroquestao = numeroquestao + 1;
+        
+        if (index == questions.length) {
+            ResultadoFacilTela Tr = new ResultadoFacilTela();
+            Tr.setVisible(true);
+            
+            ResultadoFacilTela.txtPontuacao.setText("Sua Pontuação: " + correct + " / " + questions.length);
+            ResultadoFacilTela.txtConclusao.setText("Voce concluiu o quiz de Nível Fácil!!");
+            
+             UsuarioLogado.usuario.setPontuacaoTotal(UsuarioLogado.usuario.getPontuacaoTotal() + valor);
+            
+            String tempoMinutos = txtMinutos.getText();
+            ResultadoFacilTela.txtTempo.setText("Seu tempo: " + tempoMinutos);
+            
+            String tempoSegundos = txtSegundos.getText();
+            ResultadoFacilTela.txtTempoSegundos.setText(":" + tempoSegundos);
+            
+            this.dispose();
+        }
+
+        else  {
+            //liberar os radio buttons
+            enableButtons(true);
+            //mostrar a proxima questao
+            
+            Enunciado.setText(questions[index]);
+            txtAltA.setText (options[index] [0]);
+            txtAltB.setText (options[index] [1]);
+            txtAltC.setText (options[index] [2]);
+            txtAltD.setText (options[index] [3]);
+            txtAltE.setText (options[index] [4]);
+
+            if(index == questions.length-1){
+                System.out.println("Finalizado e Veja o Resultado");
+            }
+
+        }
+    }//GEN-LAST:event_AlternativaBMouseClicked
+
+    private void AlternativaCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AlternativaCMouseClicked
+        // TODO add your handling code here:
+        NumeroQuestao.setText(String.valueOf(numeroquestao));
+        numeroquestao = numeroquestao + 1;
+        
+        if (index == questions.length) {
+            ResultadoFacilTela Tr = new ResultadoFacilTela();
+            Tr.setVisible(true);
+            
+            ResultadoFacilTela.txtPontuacao.setText("Sua Pontuação: " + correct + " / " + questions.length);
+            ResultadoFacilTela.txtConclusao.setText("Voce concluiu o quiz de Nível Fácil!!");
+            
+            
+             UsuarioLogado.usuario.setPontuacaoTotal(UsuarioLogado.usuario.getPontuacaoTotal() + valor);
+            String tempoMinutos = txtMinutos.getText();
+            ResultadoFacilTela.txtTempo.setText("Seu tempo: " + tempoMinutos);
+            
+            this.dispose();
+        }
+
+        else  {
+            //liberar os radio buttons
+            enableButtons(true);
+            //mostrar a proxima questao
+            
+            Enunciado.setText(questions[index]);
+            txtAltA.setText (options[index] [0]);
+            txtAltB.setText (options[index] [1]);
+            txtAltC.setText (options[index] [2]);
+            txtAltD.setText (options[index] [3]);
+            txtAltE.setText (options[index] [4]);
+
+            if(index == questions.length-1){
+                System.out.println("Finalizado e Veja o Resultado");
+            }
+
+        }
+    }//GEN-LAST:event_AlternativaCMouseClicked
+
+    private void AlternativaDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AlternativaDMouseClicked
+        // TODO add your handling code here:
+        NumeroQuestao.setText(String.valueOf(numeroquestao));
+        numeroquestao = numeroquestao + 1;
+        
+        if (index == questions.length) {
+            ResultadoFacilTela Tr = new ResultadoFacilTela();
+            Tr.setVisible(true);
+             
+            ResultadoFacilTela.txtPontuacao.setText("Sua Pontuação: " + correct + " / " + questions.length);
+            ResultadoFacilTela.txtConclusao.setText("Voce concluiu o quiz de Nível Fácil!!");
+            
+            UsuarioLogado.usuario.setPontuacaoTotal(UsuarioLogado.usuario.getPontuacaoTotal() + valor);
+            
+            String tempoMinutos = txtMinutos.getText();
+            ResultadoFacilTela.txtTempo.setText("Seu tempo: " + tempoMinutos);
+            
+            
+            
+            String tempoSegundos = txtSegundos.getText();
+            ResultadoFacilTela.txtTempoSegundos.setText(":" + tempoSegundos);
+            
+            this.dispose();
+        }
+
+        else  {
+            //liberar os radio buttons
+            enableButtons(true);
+            //mostrar a proxima questao
+            
+            Enunciado.setText(questions[index]);
+            txtAltA.setText (options[index] [0]);
+            txtAltB.setText (options[index] [1]);
+            txtAltC.setText (options[index] [2]);
+            txtAltD.setText (options[index] [3]);
+            txtAltE.setText (options[index] [4]);
+
+            if(index == questions.length-1){
+                System.out.println("Finalizado e Veja o Resultado");
+            }
+
+        }
+    }//GEN-LAST:event_AlternativaDMouseClicked
+
+    private void AlternativaEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AlternativaEMouseClicked
+        // TODO add your handling code here:
+        NumeroQuestao.setText(String.valueOf(numeroquestao));
+        numeroquestao = numeroquestao + 1;
+        
+        if (index == questions.length) {
+            ResultadoFacilTela Tr = new ResultadoFacilTela();
+            Tr.setVisible(true);
+            
+            ResultadoFacilTela.txtPontuacao.setText("Sua Pontuação: " + correct + " / " + questions.length);
+            ResultadoFacilTela.txtConclusao.setText("Voce concluiu o quiz de Nível Fácil!!");
+            
+            UsuarioLogado.usuario.setPontuacaoTotal(UsuarioLogado.usuario.getPontuacaoTotal() + valor);
+            
+            String tempoMinutos = txtMinutos.getText();
+            ResultadoFacilTela.txtTempo.setText("Seu tempo: " + tempoMinutos);
+            
+            
+            
+            String tempoSegundos = txtSegundos.getText();
+            ResultadoFacilTela.txtTempoSegundos.setText(":" + tempoSegundos);
+            
+            
+            this.dispose();
+        }
+
+        else  {
+            //liberar os radio buttons
+            enableButtons(true);
+            //mostrar a proxima questao
+            
+            Enunciado.setText(questions[index]);
+            txtAltA.setText (options[index] [0]);
+            txtAltB.setText (options[index] [1]);
+            txtAltC.setText (options[index] [2]);
+            txtAltD.setText (options[index] [3]);
+            txtAltE.setText (options[index] [4]);
+
+            if(index == questions.length-1){
+                System.out.println("Finalizado e Veja o Resultado");
+            }
+
+        }
+    }//GEN-LAST:event_AlternativaEMouseClicked
+
+    private void EnunciadoComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_EnunciadoComponentHidden
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EnunciadoComponentHidden
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
@@ -275,16 +565,19 @@ public class QuestoesFaceisTela extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-       // TODO add your handling code here:
-       tempo.stop();
-       
+        // TODO add your handling code here:
+        tempo.stop();
+    
+        
         String pegarEmail = CaixaParaEmail.getText();
         ResultadoFacilTela.CaixaParaEmail.setText(pegarEmail);
          try{
                 String sql = "Update login Set pontuacaoTotal = ? where email = ?";
-                Connection conexao = ConnectionFactory.getConnection();
+                Connection conexao = ConexaoHistorico.getConnection();
                 PreparedStatement ps = conexao.prepareStatement(sql);
 
+                
+                
                 ps.setInt(1, UsuarioLogado.usuario.getPontuacaoTotal());
                 ps.setString(2, CaixaParaEmail.getText());
 
@@ -296,253 +589,7 @@ public class QuestoesFaceisTela extends javax.swing.JFrame {
             catch (Exception e){
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }
-       
     }//GEN-LAST:event_formWindowClosed
-
-    private void txtAltAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAltAActionPerformed
-        // TODO add your handling code here:
-       getSelectedOption(txtAltA);
-       
-        NumeroQuestao.setText(String.valueOf(numeroQuestao));
-        numeroQuestao = numeroQuestao + 1;
-        
-        if (index == perguntas.size()) {
-            
-            ResultadoFacilTela Tr = new ResultadoFacilTela();
-            Tr.setVisible(true);
-            
-            ResultadoFacilTela.txtPontuacao.setText("Sua Pontuação: " + Pontuacao + " / " + perguntas.size());
-            ResultadoFacilTela.txtConclusao.setText("Voce concluiu o quiz de Nível Fácil!!");
-            
-            UsuarioLogado.usuario.setPontuacaoTotal(UsuarioLogado.usuario.getPontuacaoTotal() + Pontuacao);
-            
-            String tempoMinutos = txtMinutos.getText();
-            ResultadoFacilTela.txtTempo.setText("Seu tempo: " + tempoMinutos);
-
-            String tempoSegundos = txtSegundos.getText();
-            ResultadoFacilTela.txtTempoSegundos.setText(":" + tempoSegundos);
-            
-            
-            this.dispose();
-        }
-
-        else  {
-            //liberar os radio buttons
-            enableRButtons(true);
-            //mostrar a proxima questao
-            
-            Enunciado.setText(perguntas.get(index).getEnunciado());
-            txtAltA.setText(perguntas.get(index).getAlternativaA());
-            txtAltB.setText(perguntas.get(index).getAlternativaB());
-            txtAltC.setText(perguntas.get(index).getAlternativaC());
-            txtAltD.setText(perguntas.get(index).getAlternativaD());
-            txtAltE.setText(perguntas.get(index).getAlternativaE());
-            txtRespostaCorreta.setText(perguntas.get(index).getRespostaCorreta());
-            
-            bg.clearSelection();
-        }
-    }//GEN-LAST:event_txtAltAActionPerformed
-
-    private void txtAltBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAltBActionPerformed
-        // TODO add your handling code here:
-        getSelectedOption(txtAltB);
-        
-        NumeroQuestao.setText(String.valueOf(numeroQuestao));
-        numeroQuestao = numeroQuestao + 1;
-        
-        if (index == perguntas.size()) {
-            
-            ResultadoFacilTela Tr = new ResultadoFacilTela();
-            Tr.setVisible(true);
-            
-            ResultadoFacilTela.txtPontuacao.setText("Sua Pontuação: " + Pontuacao + " / " + perguntas.size());
-            ResultadoFacilTela.txtConclusao.setText("Voce concluiu o quiz de Nível Fácil!!");
-            
-            UsuarioLogado.usuario.setPontuacaoTotal(UsuarioLogado.usuario.getPontuacaoTotal() + Pontuacao);
-            
-            String tempoMinutos = txtMinutos.getText();
-            ResultadoFacilTela.txtTempo.setText("Seu tempo: " + tempoMinutos);
-
-            String tempoSegundos = txtSegundos.getText();
-            ResultadoFacilTela.txtTempoSegundos.setText(":" + tempoSegundos);
-            
-            
-            this.dispose();
-        }
-
-        else  {
-            //liberar os radio buttons
-            enableRButtons(true);
-            //mostrar a proxima questao
-            
-            Enunciado.setText(perguntas.get(index).getEnunciado());
-            txtAltA.setText(perguntas.get(index).getAlternativaA());
-            txtAltB.setText(perguntas.get(index).getAlternativaB());
-            txtAltC.setText(perguntas.get(index).getAlternativaC());
-            txtAltD.setText(perguntas.get(index).getAlternativaD());
-            txtAltE.setText(perguntas.get(index).getAlternativaE());
-            txtRespostaCorreta.setText(perguntas.get(index).getRespostaCorreta());
-            
-            bg.clearSelection();
-        }
-    }//GEN-LAST:event_txtAltBActionPerformed
-
-    private void txtAltCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAltCActionPerformed
-        // TODO add your handling code here:
-        getSelectedOption(txtAltC);
-        
-        NumeroQuestao.setText(String.valueOf(numeroQuestao));
-        numeroQuestao = numeroQuestao + 1;
-        
-        if (index == perguntas.size()) {
-            
-            ResultadoFacilTela Tr = new ResultadoFacilTela();
-            Tr.setVisible(true);
-            
-            ResultadoFacilTela.txtPontuacao.setText("Sua Pontuação: " + Pontuacao + " / " + perguntas.size());
-            ResultadoFacilTela.txtConclusao.setText("Voce concluiu o quiz de Nível Fácil!!");
-            
-            UsuarioLogado.usuario.setPontuacaoTotal(UsuarioLogado.usuario.getPontuacaoTotal() + Pontuacao);
-            
-            String tempoMinutos = txtMinutos.getText();
-            ResultadoFacilTela.txtTempo.setText("Seu tempo: " + tempoMinutos);
-
-            String tempoSegundos = txtSegundos.getText();
-            ResultadoFacilTela.txtTempoSegundos.setText(":" + tempoSegundos);
-            
-            
-            this.dispose();
-        }
-
-        else  {
-            //liberar os radio buttons
-            enableRButtons(true);
-            //mostrar a proxima questao
-            
-            Enunciado.setText(perguntas.get(index).getEnunciado());
-            txtAltA.setText(perguntas.get(index).getAlternativaA());
-            txtAltB.setText(perguntas.get(index).getAlternativaB());
-            txtAltC.setText(perguntas.get(index).getAlternativaC());
-            txtAltD.setText(perguntas.get(index).getAlternativaD());
-            txtAltE.setText(perguntas.get(index).getAlternativaE());
-            txtRespostaCorreta.setText(perguntas.get(index).getRespostaCorreta());
-            
-            bg.clearSelection();
-        }
-    }//GEN-LAST:event_txtAltCActionPerformed
-
-    private void txtAltDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAltDActionPerformed
-        // TODO add your handling code here:
-        getSelectedOption(txtAltD);
-        
-        NumeroQuestao.setText(String.valueOf(numeroQuestao));
-        numeroQuestao = numeroQuestao + 1;
-        
-        if (index == perguntas.size()) {
-            
-            ResultadoFacilTela Tr = new ResultadoFacilTela();
-            Tr.setVisible(true);
-            
-            ResultadoFacilTela.txtPontuacao.setText("Sua Pontuação: " + Pontuacao + " / " + perguntas.size());
-            ResultadoFacilTela.txtConclusao.setText("Voce concluiu o quiz de Nível Fácil!!");
-            
-            UsuarioLogado.usuario.setPontuacaoTotal(UsuarioLogado.usuario.getPontuacaoTotal() + Pontuacao);
-            
-            String tempoMinutos = txtMinutos.getText();
-            ResultadoFacilTela.txtTempo.setText("Seu tempo: " + tempoMinutos);
-
-            String tempoSegundos = txtSegundos.getText();
-            ResultadoFacilTela.txtTempoSegundos.setText(":" + tempoSegundos);
-            
-            
-            this.dispose();
-        }
-
-        else  {
-            //liberar os radio buttons
-            enableRButtons(true);
-            //mostrar a proxima questao
-            
-            Enunciado.setText(perguntas.get(index).getEnunciado());
-            txtAltA.setText(perguntas.get(index).getAlternativaA());
-            txtAltB.setText(perguntas.get(index).getAlternativaB());
-            txtAltC.setText(perguntas.get(index).getAlternativaC());
-            txtAltD.setText(perguntas.get(index).getAlternativaD());
-            txtAltE.setText(perguntas.get(index).getAlternativaE());
-            txtRespostaCorreta.setText(perguntas.get(index).getRespostaCorreta());
-            
-            bg.clearSelection();
-        }
-    }//GEN-LAST:event_txtAltDActionPerformed
-
-    private void txtAltEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAltEActionPerformed
-        // TODO add your handling code here:
-        getSelectedOption(txtAltE);
-        
-        NumeroQuestao.setText(String.valueOf(numeroQuestao));
-        numeroQuestao = numeroQuestao + 1;
-        
-        if (index == perguntas.size()) {
-            
-            ResultadoFacilTela Tr = new ResultadoFacilTela();
-            Tr.setVisible(true);
-            
-            ResultadoFacilTela.txtPontuacao.setText("Sua Pontuação: " + Pontuacao + " / " + perguntas.size());
-            ResultadoFacilTela.txtConclusao.setText("Voce concluiu o quiz de Nível Fácil!!");
-            
-            UsuarioLogado.usuario.setPontuacaoTotal(UsuarioLogado.usuario.getPontuacaoTotal() + Pontuacao);
-            
-            String tempoMinutos = txtMinutos.getText();
-            ResultadoFacilTela.txtTempo.setText("Seu tempo: " + tempoMinutos);
-
-            String tempoSegundos = txtSegundos.getText();
-            ResultadoFacilTela.txtTempoSegundos.setText(":" + tempoSegundos);
-            
-            
-            this.dispose();
-        }
-
-        else  {
-            //liberar os radio buttons
-            enableRButtons(true);
-            //mostrar a proxima questao
-            
-            Enunciado.setText(perguntas.get(index).getEnunciado());
-            txtAltA.setText(perguntas.get(index).getAlternativaA());
-            txtAltB.setText(perguntas.get(index).getAlternativaB());
-            txtAltC.setText(perguntas.get(index).getAlternativaC());
-            txtAltD.setText(perguntas.get(index).getAlternativaD());
-            txtAltE.setText(perguntas.get(index).getAlternativaE());
-            txtRespostaCorreta.setText(perguntas.get(index).getRespostaCorreta());
-            
-            bg.clearSelection();
-        }
-    }//GEN-LAST:event_txtAltEActionPerformed
-
-    private void txtAltAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtAltAMouseClicked
-        // TODO add your handling code here:
-       
-    }//GEN-LAST:event_txtAltAMouseClicked
-
-    private void txtAltBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtAltBMouseClicked
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_txtAltBMouseClicked
-
-    private void txtAltCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtAltCMouseClicked
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_txtAltCMouseClicked
-
-    private void txtAltDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtAltDMouseClicked
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_txtAltDMouseClicked
-
-    private void txtAltEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtAltEMouseClicked
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_txtAltEMouseClicked
 
     /**
      * @param args the command line arguments
@@ -570,33 +617,45 @@ public class QuestoesFaceisTela extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(QuestoesFaceisTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new QuestoesFaceisTela().setVisible(true);
-                } catch (Exception ex) {
-                    Logger.getLogger(QuestoesFaceisTela.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new QuestoesFaceisTela().setVisible(true);
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AlternativaA;
+    private javax.swing.JButton AlternativaB;
+    private javax.swing.JButton AlternativaC;
+    private javax.swing.JButton AlternativaD;
+    private javax.swing.JButton AlternativaE;
     public static javax.swing.JLabel CaixaParaEmail;
-    public static javax.swing.JLabel Enunciado;
-    private javax.swing.JLabel LabelFacil;
+    private javax.swing.JLabel Enunciado;
+    private javax.swing.JLabel NomeDificuldade;
     public static javax.swing.JLabel NumeroPontuacao;
     private javax.swing.JLabel NumeroQuestao;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JRadioButton txtAltA;
-    private javax.swing.JRadioButton txtAltB;
-    private javax.swing.JRadioButton txtAltC;
-    private javax.swing.JRadioButton txtAltD;
-    private javax.swing.JRadioButton txtAltE;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel txtAltA;
+    private javax.swing.JLabel txtAltB;
+    private javax.swing.JLabel txtAltC;
+    private javax.swing.JLabel txtAltD;
+    private javax.swing.JLabel txtAltE;
     public static javax.swing.JLabel txtMinutos;
-    private javax.swing.JLabel txtRespostaCorreta;
     public static javax.swing.JLabel txtSegundos;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,16 +1,18 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Other/File.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Jogo;
+package com.mycompany;
 
-import java.util.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
-
-public class QuestoesDAODificil {
+public class QuestoesDAO {
     
     
     public List <Pergunta> obterPerguntas () throws Exception{
@@ -20,13 +22,14 @@ public class QuestoesDAODificil {
             List <Pergunta> perguntas = new ArrayList <>();
    
             //1. abrir uma conexao com o banco
-            Connection conexao = ConnectionFactory.getConnection();
+            Connection conexao = ConnectionFactoryLogin.getConnection();
             //2. Executar o comando SELECT com join
-            String sql = "select * from perguntas, respostas where perguntas.idPergunta = respostas.idPergunta and exists (select * from perguntas where idResposta Like \"%RD%\") ";
+            String sql = "select * from perguntas, respostas where perguntas.idPergunta = respostas.idPergunta and idResposta";
             //3. Tratar o resultado que estara dentro de um ResultSet...
             PreparedStatement ps = conexao.prepareStatement(sql);
             
             
+        
             ResultSet rs = ps.executeQuery();
             
             List <String> letras = Arrays.asList(new String []{"A", "B", "C", "D", "E"});
@@ -52,4 +55,3 @@ public class QuestoesDAODificil {
             return perguntas;     
     }    
 }
-

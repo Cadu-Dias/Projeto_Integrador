@@ -2,26 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Jogo;
-
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+package com.mycompany;
 
 /**
  *
  * @author cadub
  */
 public class DificuldadeDificilTela extends javax.swing.JFrame {
-    List <Pergunta> perguntasDificeis;
-    /**
-     * Creates new form DificuldadeDificilTela
-     */
-    public DificuldadeDificilTela() throws Exception {
+String[] questions = {"Explique os princípios da orientação a objeto?", "Quais operações compõem o termo CRUD?", "Qual é uma das principais características de um Sistema gerenciador de banco de dados (SGBD)?", "Escolha a alternativa que complete essa frase: Uma classe pode fazer a definição de elementos (atributos, métodos) que sejam comuns a diversas outras classes e então, por meio da _____, elas obtêm uma cópia desses elementos sem ter que defini-los novamente", "O método showInputDialog sempre devolve uma?"};
+String[] [] options ={{"Herança dada pela classe encapsulada", "Abstração, encapsulamento e herança são os princípios da orientação a objeto", "Encapsulamento, string theory e mainframe adaption são os princípios da orientação a objeto", "Herança e abstração são os princípios da orientação a objeto", "Abstração, encapsulamento, herança e polimorfismo são os princípios da orientação a objeto", "E"}, {"Create, Retouch, Update e Delete", "Create, Read, unlearn e Destroy", "Convey, Rat, Update e Delete", "Construct, Read, Update e Delete", "Create, Read, Update e Delete", "E"}, {"Deletar e fazer um update dos dados presentes dentro do banco de dados", "Fazer com que o banco de dados tenha uma taxa de updates maiores e com que ele consiga rodar mais rapidamente", "Comparar todos os dados que estão presentes dentro do banco de dados e verificar se não estão afetando as operações CRUD", "Utilizar as operações CRUD", "Simplificar a implementação\n" +
+    "das operações CRUD", "E"}, {"Java", "MainFrame", "Class", "String", "Herança", "E"}, {"Classe", "Resultado", "Nada", "Uma Mensagem", "String", "E"}};
+int index = 0;
+   
+    
+    public DificuldadeDificilTela() {
         initComponents();
         
-        perguntasDificeis = new QuestoesDAODificil().obterPerguntas();
-        quantidadeQuestoes.setText(String.valueOf(perguntasDificeis.size()));
+        
     }
 
     /**
@@ -34,86 +31,110 @@ public class DificuldadeDificilTela extends javax.swing.JFrame {
     private void initComponents() {
 
         CaixaParaEmail = new javax.swing.JLabel();
-        BotaoStart = new javax.swing.JButton();
-        quantidadeQuestoes = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         BotãoVoltar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        fundo = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        Fundo = new javax.swing.JLabel();
 
-        CaixaParaEmail.setText("jLabel1");
+        CaixaParaEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        CaixaParaEmail.setText("jLabel8");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BotaoStart.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\StartDificudadeDifícil.png")); // NOI18N
-        BotaoStart.setBorder(null);
-        BotaoStart.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Dificuldade Difícil");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, -1, -1));
+
+        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\OneDrive\\Imagens\\Saved Pictures\\4842316-start-icon-in-trendy-long-shadow-style-isolated-on-soft-blue-background-grátis-vetor.jpg")); // NOI18N
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BotaoStartMouseClicked(evt);
+                jButton2MouseClicked(evt);
             }
         });
-        BotaoStart.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoStartActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(BotaoStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 570, 320, 80));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 120, -1));
 
-        quantidadeQuestoes.setFont(new java.awt.Font("Eras Bold ITC", 0, 22)); // NOI18N
-        quantidadeQuestoes.setForeground(new java.awt.Color(255, 255, 255));
-        quantidadeQuestoes.setText("17");
-        getContentPane().add(quantidadeQuestoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 260, 80, -1));
-
-        BotãoVoltar.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\BotãoVoltarNether.png")); // NOI18N
-        BotãoVoltar.setBorder(null);
+        BotãoVoltar.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\Botão-Voltar.png")); // NOI18N
         BotãoVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotãoVoltarActionPerformed(evt);
             }
         });
-        getContentPane().add(BotãoVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 110));
+        getContentPane().add(BotãoVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 150, 60));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\FundoEscuro.png")); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 250, -1, -1));
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 23)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Instruções:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, -1, -1));
 
-        fundo.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\1253QUANTUMVM.UNRARMETRO_ckbnxvahp5f44!App\\Extracted\\Imagens feitas\\Dificil.png")); // NOI18N
-        getContentPane().add(fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("- Este Quiz apresenta 5 perguntas no total");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, -1, -1));
+
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("- Você tera 3 minutos para respondê-la");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, -1, -1));
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("- Para cada acerto você obterá 5 pontos");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("- Para cada erro você perderá 4 pontos");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, 340, -1));
+
+        Fundo.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\OneDrive\\Imagens\\Saved Pictures\\Azul Laranja.jpg")); // NOI18N
+        getContentPane().add(Fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 420));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BotaoStartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotaoStartMouseClicked
-        // TODO add your handling code her
-    }//GEN-LAST:event_BotaoStartMouseClicked
-
-    private void BotaoStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoStartActionPerformed
-        // TODO add your handling code here:
-        QuestoesDificeisTela QDT;
-        try {
-            QDT = new QuestoesDificeisTela();
-            QDT.setVisible(true);
-            
-            String pegarEmail = CaixaParaEmail.getText();
-            QuestoesDificeisTela.CaixaParaEmail.setText(pegarEmail);
-        } catch (Exception ex) {
-            Logger.getLogger(DificuldadeDificilTela.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        this.dispose();
-    }//GEN-LAST:event_BotaoStartActionPerformed
-
     private void BotãoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotãoVoltarActionPerformed
         // TODO add your handling code here:
-        DificuldadeTela Dt = new DificuldadeTela();
-        Dt.setVisible(true);
-
-        String pegarEmail = CaixaParaEmail.getText();
-        DificuldadeTela.CaixaParaEmail.setText(pegarEmail);
-
+        DificuldadeTela TD = new DificuldadeTela();
+        TD.setVisible(true);
+        
         this.dispose();
     }//GEN-LAST:event_BotãoVoltarActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        QuestoesDificeisTela QD = new QuestoesDificeisTela();
+        QD.setVisible(true);
+        
+        String pegarEmail = CaixaParaEmail.getText();
+        QuestoesDificeisTela.CaixaParaEmail.setText(pegarEmail);
+        
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_jButton2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -141,25 +162,26 @@ public class DificuldadeDificilTela extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(DificuldadeDificilTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new DificuldadeDificilTela().setVisible(true);
-                } catch (Exception ex) {
-                    Logger.getLogger(DificuldadeDificilTela.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new DificuldadeDificilTela().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotaoStart;
     private javax.swing.JButton BotãoVoltar;
     public static javax.swing.JLabel CaixaParaEmail;
-    private javax.swing.JLabel fundo;
+    private javax.swing.JLabel Fundo;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel quantidadeQuestoes;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
 }

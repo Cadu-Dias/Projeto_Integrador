@@ -2,8 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Jogo;
+package com.mycompany;
 
+/**
+ *
+ * @author cadub
+ */
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +18,7 @@ public class UsuarioDAO {
         //Especificar o comando
         String sql = "Select * from login where email = ? AND senha = ?";
         //Abrir um conexao com o MySql
-        Connection conexao = ConnectionFactory.getConnection();
+        Connection conexao = ConnectionFactoryLogin.getConnection();
         //Preparar conexao
         PreparedStatement ps = conexao.prepareStatement(sql);
         //Substituir os placeholders (?)

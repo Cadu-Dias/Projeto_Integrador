@@ -2,10 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Jogo;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
+package com.mycompany;
 
 /**
  *
@@ -14,7 +11,7 @@ import java.util.logging.Logger;
 public class DificuldadeTela extends javax.swing.JFrame {
 
     /**
-     * Creates new form DificuldadeTela
+     * Creates new form TelaDificuldade
      */
     public DificuldadeTela() {
         initComponents();
@@ -30,119 +27,126 @@ public class DificuldadeTela extends javax.swing.JFrame {
     private void initComponents() {
 
         CaixaParaEmail = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         BotãoDificuldadeFácil = new javax.swing.JButton();
         BotãoDificuldadeMédio = new javax.swing.JButton();
         BotãoDificuldadeDifícil = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        BotãoVoltar = new javax.swing.JButton();
         Fundo = new javax.swing.JLabel();
 
-        CaixaParaEmail.setText("jLabel2");
+        CaixaParaEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        CaixaParaEmail.setText("jLabel6");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BotãoDificuldadeFácil.setBackground(new java.awt.Color(242, 168, 84));
-        BotãoDificuldadeFácil.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\BotãoDificuldadeFácil.png")); // NOI18N
-        BotãoDificuldadeFácil.setBorder(null);
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Escolha Dificuldade");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, 350, -1));
+
+        BotãoDificuldadeFácil.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\OneDrive\\Imagens\\Saved Pictures\\BotãoFácil.png")); // NOI18N
         BotãoDificuldadeFácil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotãoDificuldadeFácilActionPerformed(evt);
             }
         });
-        getContentPane().add(BotãoDificuldadeFácil, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 170, 150));
+        getContentPane().add(BotãoDificuldadeFácil, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 80, 70));
 
-        BotãoDificuldadeMédio.setBackground(new java.awt.Color(242, 168, 84));
-        BotãoDificuldadeMédio.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\BotãoDificuldadeMédia.png")); // NOI18N
-        BotãoDificuldadeMédio.setBorder(null);
+        BotãoDificuldadeMédio.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\OneDrive\\Imagens\\Saved Pictures\\BotãoMédio.png")); // NOI18N
         BotãoDificuldadeMédio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotãoDificuldadeMédioActionPerformed(evt);
             }
         });
-        getContentPane().add(BotãoDificuldadeMédio, new org.netbeans.lib.awtextra.AbsoluteConstraints(607, 340, 170, 150));
+        getContentPane().add(BotãoDificuldadeMédio, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, 78, 72));
 
-        BotãoDificuldadeDifícil.setBackground(new java.awt.Color(242, 168, 84));
-        BotãoDificuldadeDifícil.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\BotãoDificuldadeDifícil.png")); // NOI18N
-        BotãoDificuldadeDifícil.setBorder(null);
+        BotãoDificuldadeDifícil.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\OneDrive\\Imagens\\Saved Pictures\\Botão Dificil.png")); // NOI18N
         BotãoDificuldadeDifícil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotãoDificuldadeDifícilActionPerformed(evt);
             }
         });
-        getContentPane().add(BotãoDificuldadeDifícil, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 340, 160, 150));
+        getContentPane().add(BotãoDificuldadeDifícil, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 200, 78, 73));
 
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\BotãoVoltarAzul.png")); // NOI18N
-        jButton2.setBorder(null);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 23)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Fácil");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 141, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 23)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Médio");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(435, 141, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 23)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Díficil");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 140, -1, -1));
+
+        BotãoVoltar.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\Botão-Voltar.png")); // NOI18N
+        BotãoVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                BotãoVoltarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 100, 90));
+        getContentPane().add(BotãoVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 150, 60));
 
-        Fundo.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\1253QUANTUMVM.UNRARMETRO_ckbnxvahp5f44!App\\Extracted\\Imagens feitas\\Dificulddades.png")); // NOI18N
-        getContentPane().add(Fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        Fundo.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\OneDrive\\Imagens\\Saved Pictures\\Azul Laranja.jpg")); // NOI18N
+        getContentPane().add(Fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 420));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotãoDificuldadeFácilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotãoDificuldadeFácilActionPerformed
-        try {
-            // TODO add your handling code here:
-            DificuldadeFacilTela TDC = new DificuldadeFacilTela();
-            TDC.setVisible(true);
-            
-            String pegarEmail = CaixaParaEmail.getText();
-            DificuldadeFacilTela.CaixaParaEmail.setText(pegarEmail);
-            
-            this.dispose();
-        } catch (Exception ex) {
-            Logger.getLogger(DificuldadeTela.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        // TODO add your handling code here:
+        DificuldadeFacilTela TDC = new DificuldadeFacilTela();
+        TDC.setVisible(true);
+        
+        String pegarEmail = CaixaParaEmail.getText();
+        DificuldadeFacilTela.CaixaParaEmail.setText(pegarEmail);
+        
+        this.dispose();
     }//GEN-LAST:event_BotãoDificuldadeFácilActionPerformed
 
     private void BotãoDificuldadeMédioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotãoDificuldadeMédioActionPerformed
-        try {
-            // TODO add your handling code here:
-            DificuldadeMedioTela DMT = new DificuldadeMedioTela();
-            DMT.setVisible(true);
-            
-            String pegarEmail = CaixaParaEmail.getText();
-            DificuldadeMedioTela.CaixaParaEmail.setText(pegarEmail);
-            
-            this.dispose();
-        } catch (Exception ex) {
-            Logger.getLogger(DificuldadeTela.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        // TODO add your handling code here:
+        DificuldadeMedioTela TDM = new DificuldadeMedioTela();
+        TDM.setVisible(true);
+        
+        String pegarEmail = CaixaParaEmail.getText();
+        DificuldadeMedioTela.CaixaParaEmail.setText(pegarEmail);
+        
+        this.dispose();
     }//GEN-LAST:event_BotãoDificuldadeMédioActionPerformed
 
     private void BotãoDificuldadeDifícilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotãoDificuldadeDifícilActionPerformed
-        try {
-            // TODO add your handling code here:
-            DificuldadeDificilTela DDT = new DificuldadeDificilTela();
-            DDT.setVisible(true);
-            
-            String pegarEmail = CaixaParaEmail.getText();
-            DificuldadeDificilTela.CaixaParaEmail.setText(pegarEmail);
-            
-            this.dispose();
-        } catch (Exception ex) {
-            Logger.getLogger(DificuldadeTela.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        // TODO add your handling code here:
+        DificuldadeDificilTela TDD = new DificuldadeDificilTela();
+        TDD.setVisible(true);
+        
+        String pegarEmail = CaixaParaEmail.getText();
+        DificuldadeDificilTela.CaixaParaEmail.setText(pegarEmail);
+        
+        this.dispose();
     }//GEN-LAST:event_BotãoDificuldadeDifícilActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void BotãoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotãoVoltarActionPerformed
         // TODO add your handling code here:
-        PrincipalTela Pt = new PrincipalTela();
-        Pt.setVisible(true);
+        PrincipalTela TP= new PrincipalTela();
+        TP.setVisible(true);
         
         String pegarEmail = CaixaParaEmail.getText();
         PrincipalTela.CaixaParaEmail.setText(pegarEmail);
         
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_BotãoVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,6 +174,7 @@ public class DificuldadeTela extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(DificuldadeTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -183,8 +188,12 @@ public class DificuldadeTela extends javax.swing.JFrame {
     private javax.swing.JButton BotãoDificuldadeDifícil;
     private javax.swing.JButton BotãoDificuldadeFácil;
     private javax.swing.JButton BotãoDificuldadeMédio;
+    private javax.swing.JButton BotãoVoltar;
     public static javax.swing.JLabel CaixaParaEmail;
     private javax.swing.JLabel Fundo;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

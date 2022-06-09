@@ -2,24 +2,29 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Jogo;
+package com.mycompany;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author cadub
  */
 public class ResultadoFacilTela extends javax.swing.JFrame {
-
-    /**
-     * Creates new form ResultadoFacilTela
-     */
+    
+    
+    
     public ResultadoFacilTela() {
         initComponents();
+        
+        
     }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,44 +34,42 @@ public class ResultadoFacilTela extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        NomeDificuldade = new javax.swing.JLabel();
+        PegarMinuto = new javax.swing.JLabel();
+        PegarSegundo = new javax.swing.JLabel();
         CaixaParaEmail = new javax.swing.JLabel();
+        PontuacaoFacil = new javax.swing.JLabel();
         txtConclusao = new javax.swing.JLabel();
-        BotaoReiniciarQuiz = new javax.swing.JButton();
-        txtConclusao1 = new javax.swing.JLabel();
         BotaoTrocarDificuldade = new javax.swing.JButton();
         BotaoHistorico = new javax.swing.JButton();
-        BotaoLogout1 = new javax.swing.JButton();
+        BotaoLogout = new javax.swing.JButton();
         txtPontuacao = new javax.swing.JLabel();
         txtTempo = new javax.swing.JLabel();
+        BotaoReiniciarQuiz = new javax.swing.JButton();
         txtTempoSegundos = new javax.swing.JLabel();
-        Fundo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+
+        NomeDificuldade.setText("Fácil");
+
+        PegarMinuto.setText("jLabel1");
+
+        PegarSegundo.setText("jLabel2");
 
         CaixaParaEmail.setText("jLabel1");
 
+        PontuacaoFacil.setText("jLabel1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtConclusao.setFont(new java.awt.Font("Eras Bold ITC", 1, 32)); // NOI18N
+        txtConclusao.setFont(new java.awt.Font("Segoe UI", 1, 27)); // NOI18N
         txtConclusao.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(txtConclusao, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 710, 70));
-
-        BotaoReiniciarQuiz.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\BotãoReinicarQuizFacil.png")); // NOI18N
-        BotaoReiniciarQuiz.setBorder(null);
-        BotaoReiniciarQuiz.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        BotaoReiniciarQuiz.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoReiniciarQuizActionPerformed(evt);
-            }
-        });
-        getContentPane().add(BotaoReiniciarQuiz, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 580, 330, -1));
-
-        txtConclusao1.setFont(new java.awt.Font("Segoe UI", 1, 27)); // NOI18N
-        txtConclusao1.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(txtConclusao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 590, 51));
+        getContentPane().add(txtConclusao, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 590, 51));
 
         BotaoTrocarDificuldade.setBackground(new java.awt.Color(95, 84, 242));
-        BotaoTrocarDificuldade.setForeground(new java.awt.Color(242, 242, 242));
+        BotaoTrocarDificuldade.setForeground(new java.awt.Color(95, 84, 242));
         BotaoTrocarDificuldade.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\BotãoTrocarDificuldade.png")); // NOI18N
         BotaoTrocarDificuldade.setBorder(null);
         BotaoTrocarDificuldade.addActionListener(new java.awt.event.ActionListener() {
@@ -86,36 +89,64 @@ public class ResultadoFacilTela extends javax.swing.JFrame {
         });
         getContentPane().add(BotaoHistorico, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 410, 340, 100));
 
-        BotaoLogout1.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\BotãoLogout.png")); // NOI18N
-        BotaoLogout1.setBorder(null);
-        BotaoLogout1.addActionListener(new java.awt.event.ActionListener() {
+        BotaoLogout.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\OneDrive\\Imagens\\Saved Pictures\\IconeLogout.png")); // NOI18N
+        BotaoLogout.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        BotaoLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoLogout1ActionPerformed(evt);
+                BotaoLogoutActionPerformed(evt);
             }
         });
-        getContentPane().add(BotaoLogout1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 630, 80, 80));
+        getContentPane().add(BotaoLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, 110, 40));
 
-        txtPontuacao.setFont(new java.awt.Font("Eras Bold ITC", 1, 30)); // NOI18N
+        txtPontuacao.setFont(new java.awt.Font("Segoe UI", 1, 23)); // NOI18N
         txtPontuacao.setForeground(new java.awt.Color(255, 255, 255));
         txtPontuacao.setText("jLabel1");
-        getContentPane().add(txtPontuacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 400, -1));
+        getContentPane().add(txtPontuacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 400, -1));
 
-        txtTempo.setFont(new java.awt.Font("Eras Bold ITC", 1, 30)); // NOI18N
+        txtTempo.setFont(new java.awt.Font("Segoe UI", 1, 23)); // NOI18N
         txtTempo.setForeground(new java.awt.Color(255, 255, 255));
         txtTempo.setText("Seu tempo: 5");
-        getContentPane().add(txtTempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, 246, -1));
+        getContentPane().add(txtTempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 246, -1));
 
-        txtTempoSegundos.setFont(new java.awt.Font("Eras Bold ITC", 1, 30)); // NOI18N
+        BotaoReiniciarQuiz.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\BotãoReiniciarQuizFacil.png")); // NOI18N
+        BotaoReiniciarQuiz.setBorder(null);
+        BotaoReiniciarQuiz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotaoReiniciarQuizActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BotaoReiniciarQuiz, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 580, 330, 90));
+
+        txtTempoSegundos.setFont(new java.awt.Font("Segoe UI", 1, 23)); // NOI18N
         txtTempoSegundos.setForeground(new java.awt.Color(255, 255, 255));
         txtTempoSegundos.setText(":00");
-        getContentPane().add(txtTempoSegundos, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, 160, -1));
+        getContentPane().add(txtTempoSegundos, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 160, -1));
 
-        Fundo.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\1253QUANTUMVM.UNRARMETRO_ckbnxvahp5f44!App\\Extracted\\Final_Facil.png")); // NOI18N
-        getContentPane().add(Fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\1253QUANTUMVM.UNRARMETRO_ckbnxvahp5f44!App\\Extracted\\Final_Facil.png")); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BotaoLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoLogoutActionPerformed
+        // TODO add your handling code here:
+        LoginTela Lt = new LoginTela();
+        Lt.setVisible(true);
+        
+        this.dispose();
+    }//GEN-LAST:event_BotaoLogoutActionPerformed
+
+    private void BotaoHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoHistoricoActionPerformed
+        // TODO add your handling code here:
+        HistoricoTela Th = new HistoricoTela();
+        Th.setVisible(true);
+
+        String pegarEmail = CaixaParaEmail.getText();
+        HistoricoTela.CaixaParaEmail.setText(pegarEmail);
+
+        this.dispose();
+    }//GEN-LAST:event_BotaoHistoricoActionPerformed
 
     private void BotaoTrocarDificuldadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoTrocarDificuldadeActionPerformed
         // TODO add your handling code here:
@@ -128,38 +159,15 @@ public class ResultadoFacilTela extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_BotaoTrocarDificuldadeActionPerformed
 
-    private void BotaoHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoHistoricoActionPerformed
-        // TODO add your handling code here:
-        RankingTela Th = new RankingTela();
-        Th.setVisible(true);
-
-        String pegarEmail = CaixaParaEmail.getText();
-        RankingTela.CaixaParaEmail.setText(pegarEmail);
-
-        this.dispose();
-    }//GEN-LAST:event_BotaoHistoricoActionPerformed
-
-    private void BotaoLogout1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoLogout1ActionPerformed
-        // TODO add your handling code here:
-        LoginTela Lt = new LoginTela();
-        Lt.setVisible(true);
-
-        this.dispose();
-    }//GEN-LAST:event_BotaoLogout1ActionPerformed
-
     private void BotaoReiniciarQuizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoReiniciarQuizActionPerformed
         // TODO add your handling code here:
-        QuestoesFaceisTela Qf;
-        try {
-            Qf = new QuestoesFaceisTela();
-            Qf.setVisible(true);
-            
-            String pegarEmail = CaixaParaEmail.getText();
-            QuestoesFaceisTela.CaixaParaEmail.setText(pegarEmail);
-        } catch (Exception ex) {
-            Logger.getLogger(ResultadoFacilTela.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        QuestoesFaceisTela Qf = new QuestoesFaceisTela();
+        Qf.setVisible(true);
+
+        String pegarEmail = CaixaParaEmail.getText();
+        QuestoesFaceisTela.CaixaParaEmail.setText(pegarEmail);
+
+        this.dispose();
     }//GEN-LAST:event_BotaoReiniciarQuizActionPerformed
 
     /**
@@ -188,6 +196,9 @@ public class ResultadoFacilTela extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ResultadoFacilTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -199,13 +210,16 @@ public class ResultadoFacilTela extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotaoHistorico;
-    private javax.swing.JButton BotaoLogout1;
+    private javax.swing.JButton BotaoLogout;
     private javax.swing.JButton BotaoReiniciarQuiz;
     private javax.swing.JButton BotaoTrocarDificuldade;
     public static javax.swing.JLabel CaixaParaEmail;
-    private javax.swing.JLabel Fundo;
+    public static javax.swing.JLabel NomeDificuldade;
+    public static javax.swing.JLabel PegarMinuto;
+    public static javax.swing.JLabel PegarSegundo;
+    public static javax.swing.JLabel PontuacaoFacil;
+    private javax.swing.JLabel jLabel1;
     public static javax.swing.JLabel txtConclusao;
-    public static javax.swing.JLabel txtConclusao1;
     public static javax.swing.JLabel txtPontuacao;
     public static javax.swing.JLabel txtTempo;
     public static javax.swing.JLabel txtTempoSegundos;

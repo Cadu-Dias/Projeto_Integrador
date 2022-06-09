@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Jogo;
+package com.mycompany;
 
 /**
  *
@@ -10,69 +10,68 @@ package Jogo;
  */
 public class Pergunta {
     
-    private String enunciado;
-    private String alternativaA;
-    private String alternativaB;
-    private String alternativaC;
-    private String alternativaD;
-    private String alternativaE;
+    private String Enunciado;
+    private String AlternativaA;
+    private String AlternativaB;
+    private String AlternativaC;
+    private String AlternativaD;
+    private String AlternativaE;
     private String RespostaCorreta;
 
-    
+    public String getRespostaCorreta() {
+        return RespostaCorreta;
+    }
 
     public void setRespostaCorreta(String RespostaCorreta) {
         this.RespostaCorreta = RespostaCorreta;
     }
-    
+
     public String getEnunciado() {
-        return enunciado;
+        return Enunciado;
     }
 
-    public void setEnunciado(String enunciado) {
-        this.enunciado = enunciado;
+    public void setEnunciado(String Enunciado) {
+        this.Enunciado = Enunciado;
     }
 
     public String getAlternativaA() {
-        return alternativaA;
+        return AlternativaA;
     }
 
-    public void setAlternativaA(String alternativaA) {
-        this.alternativaA = alternativaA;
+    public void setAlternativaA(String AlternativaA) {
+        this.AlternativaA = AlternativaA;
     }
 
     public String getAlternativaB() {
-        return alternativaB;
+        return AlternativaB;
     }
 
-    public void setAlternativaB(String alternativaB) {
-        this.alternativaB = alternativaB;
+    public void setAlternativaB(String AlternativaB) {
+        this.AlternativaB = AlternativaB;
     }
 
     public String getAlternativaC() {
-        return alternativaC;
+        return AlternativaC;
     }
 
-    public void setAlternativaC(String alternativaC) {
-        this.alternativaC = alternativaC;
+    public void setAlternativaC(String AlternativaC) {
+        this.AlternativaC = AlternativaC;
     }
 
     public String getAlternativaD() {
-        return alternativaD;
+        return AlternativaD;
     }
 
-    public void setAlternativaD(String alternativaD) {
-        this.alternativaD = alternativaD;
+    public void setAlternativaD(String AlternativaD) {
+        this.AlternativaD = AlternativaD;
     }
 
     public String getAlternativaE() {
-        return alternativaE;
+        return AlternativaE;
     }
 
-    public void setAlternativaE(String alternativaE) {
-        this.alternativaE = alternativaE;
+    public void setAlternativaE(String AlternativaE) {
+        this.AlternativaE = AlternativaE;
     }
-
-    String getRespostaCorreta() {
-        return RespostaCorreta;
-    }
+    
 }

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Jogo;
+package com.mycompany;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,12 +14,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author cadub
  */
-public class RankingTela extends javax.swing.JFrame {
+public class HistoricoTela extends javax.swing.JFrame {
 
     /**
-     * Creates new form HistoricoTela
+     * Creates new form TelaRanking
      */
-    public RankingTela() {
+    public HistoricoTela() {
         initComponents();
     }
 
@@ -33,15 +33,24 @@ public class RankingTela extends javax.swing.JFrame {
     private void initComponents() {
 
         CaixaParaEmail = new javax.swing.JLabel();
+        PontuacaoFacil = new javax.swing.JLabel();
+        PontuacaoMedio = new javax.swing.JLabel();
+        PontuacaoDificil = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TabelaPontuacao = new javax.swing.JTable();
-        BotaoVoltar = new javax.swing.JButton();
-        Fundo = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
-        CaixaParaEmail.setText("jLabel1");
+        CaixaParaEmail.setText("jLabel2");
+
+        PontuacaoFacil.setText("jLabel2");
+
+        PontuacaoMedio.setText("jLabel2");
+
+        PontuacaoDificil.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -68,20 +77,15 @@ public class RankingTela extends javax.swing.JFrame {
         });
         TabelaPontuacao.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(TabelaPontuacao);
+        if (TabelaPontuacao.getColumnModel().getColumnCount() > 0) {
+            TabelaPontuacao.getColumnModel().getColumn(0).setResizable(false);
+            TabelaPontuacao.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 1040, 530));
 
-        BotaoVoltar.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\BotãoVoltar3.png")); // NOI18N
-        BotaoVoltar.setBorder(null);
-        BotaoVoltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoVoltarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(BotaoVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 90));
-
-        Fundo.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\1253QUANTUMVM.UNRARMETRO_ckbnxvahp5f44!App\\Extracted\\Imagens feitas\\historico.png")); // NOI18N
-        getContentPane().add(Fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\1253QUANTUMVM.UNRARMETRO_ckbnxvahp5f44!App\\Extracted\\Imagens feitas\\historico.png")); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -89,11 +93,11 @@ public class RankingTela extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
-         DefaultTableModel TabelaPontuacaoFacil = (DefaultTableModel) RankingTela.TabelaPontuacao.getModel();
+        DefaultTableModel TabelaPontuacaoFacil = (DefaultTableModel) HistoricoTela.TabelaPontuacao.getModel();
  
         try {
             
-            Connection conexao = ConnectionFactory.getConnection();
+            Connection conexao = ConexaoHistorico.getConnection();
             String sql =  "Select nome, pontuacaoTotal from login order by pontuacaoTotal desc";
 
             PreparedStatement ps = conexao.prepareStatement(sql);
@@ -116,14 +120,6 @@ public class RankingTela extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowActivated
 
-    private void BotaoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoVoltarActionPerformed
-        // TODO add your handling code here:
-        PrincipalTela Pt = new PrincipalTela();
-        Pt.setVisible(true);
-        
-        this.dispose();
-    }//GEN-LAST:event_BotaoVoltarActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -141,30 +137,38 @@ public class RankingTela extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RankingTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HistoricoTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RankingTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HistoricoTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RankingTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HistoricoTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RankingTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HistoricoTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RankingTela().setVisible(true);
+                new HistoricoTela().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotaoVoltar;
     public static javax.swing.JLabel CaixaParaEmail;
-    private javax.swing.JLabel Fundo;
+    private javax.swing.JLabel PontuacaoDificil;
+    private javax.swing.JLabel PontuacaoFacil;
+    private javax.swing.JLabel PontuacaoMedio;
     public static javax.swing.JTable TabelaPontuacao;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

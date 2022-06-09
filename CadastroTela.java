@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Jogo;
+package com.mycompany;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,7 +16,7 @@ import javax.swing.JOptionPane;
 public class CadastroTela extends javax.swing.JFrame {
 
     /**
-     * Creates new form CadastroTela
+     * Creates new form TelaCadastro
      */
     public CadastroTela() {
         initComponents();
@@ -30,101 +31,133 @@ public class CadastroTela extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel7 = new javax.swing.JLabel();
+        CaixaParaEmail = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        NomeLabel = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
+        EmailLabel = new javax.swing.JLabel();
+        txtSenha = new javax.swing.JTextField();
+        SenhaLabel = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
+        txtConfirmarSenha = new javax.swing.JTextField();
         BotaoCadastro = new javax.swing.JButton();
-        txtSenha = new javax.swing.JPasswordField();
-        txtConfirmarSenha = new javax.swing.JPasswordField();
-        BotaoVoltar = new javax.swing.JButton();
-        Fundo = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+
+        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\OneDrive\\Imagens\\Saved Pictures\\Azul Laranja.jpg")); // NOI18N
+
+        CaixaParaEmail.setText("jLabel3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtEmail.setBackground(new java.awt.Color(242, 168, 84));
-        txtEmail.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        txtEmail.setForeground(new java.awt.Color(255, 255, 255));
-        txtEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 2, 0, new java.awt.Color(0, 0, 0)));
-        getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 500, 60));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Cadastro");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(659, 28, -1, -1));
 
-        txtNome.setBackground(new java.awt.Color(242, 168, 84));
-        txtNome.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        txtNome.setForeground(new java.awt.Color(255, 255, 255));
-        txtNome.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 0, 2, 0, new java.awt.Color(0, 0, 0)));
-        txtNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 500, 60));
+        NomeLabel.setFont(new java.awt.Font("Segoe UI", 1, 23)); // NOI18N
+        NomeLabel.setForeground(new java.awt.Color(255, 255, 255));
+        NomeLabel.setText("Nome:");
+        getContentPane().add(NomeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, -1, -1));
+        getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 140, 221, -1));
 
-        BotaoCadastro.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\BotãoRegistrar.png")); // NOI18N
-        BotaoCadastro.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
-        BotaoCadastro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoCadastroActionPerformed(evt);
-            }
-        });
-        getContentPane().add(BotaoCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 590, 220, 80));
+        EmailLabel.setFont(new java.awt.Font("Segoe UI", 1, 23)); // NOI18N
+        EmailLabel.setForeground(new java.awt.Color(255, 255, 255));
+        EmailLabel.setText("Email:");
+        getContentPane().add(EmailLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, -1, -1));
 
-        txtSenha.setBackground(new java.awt.Color(242, 168, 84));
-        txtSenha.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        txtSenha.setForeground(new java.awt.Color(255, 255, 255));
-        txtSenha.setBorder(null);
         txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSenhaActionPerformed(evt);
             }
         });
-        getContentPane().add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 370, 500, 50));
+        getContentPane().add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 200, 221, -1));
 
-        txtConfirmarSenha.setBackground(new java.awt.Color(242, 168, 84));
-        txtConfirmarSenha.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        txtConfirmarSenha.setForeground(new java.awt.Color(255, 255, 255));
-        txtConfirmarSenha.setBorder(null);
-        getContentPane().add(txtConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, 500, 50));
+        SenhaLabel.setFont(new java.awt.Font("Segoe UI", 1, 23)); // NOI18N
+        SenhaLabel.setForeground(new java.awt.Color(255, 255, 255));
+        SenhaLabel.setText("Senha:");
+        getContentPane().add(SenhaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 200, -1, -1));
 
-        BotaoVoltar.setBackground(new java.awt.Color(242, 168, 84));
-        BotaoVoltar.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\BotãoVoltar3.png")); // NOI18N
-        BotaoVoltar.setBorder(null);
-        BotaoVoltar.addActionListener(new java.awt.event.ActionListener() {
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Confirmar Senha:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, -1, -1));
+        getContentPane().add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 90, 221, -1));
+
+        txtConfirmarSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoVoltarActionPerformed(evt);
+                txtConfirmarSenhaActionPerformed(evt);
             }
         });
-        getContentPane().add(BotaoVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 600, 80, 90));
+        getContentPane().add(txtConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 260, 220, -1));
 
-        Fundo.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\1253QUANTUMVM.UNRARMETRO_ckbnxvahp5f44!App\\Extracted\\Imagens feitas\\Cadastro.png")); // NOI18N
-        getContentPane().add(Fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        BotaoCadastro.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\OneDrive\\Imagens\\Saved Pictures\\Botão de Registrar.png")); // NOI18N
+        BotaoCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotaoCadastroActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BotaoCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 320, 160, 40));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\Icone Laranja Discite (1).png")); // NOI18N
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Eras Demi ITC", 1, 36)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(204, 102, 0));
+        jLabel8.setText("Project Discite");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\OneDrive\\Imagens\\Saved Pictures\\Azul Laranja.jpg")); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 430));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeActionPerformed
+    }//GEN-LAST:event_txtSenhaActionPerformed
+
+    private void txtConfirmarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfirmarSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtConfirmarSenhaActionPerformed
 
     private void BotaoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoCadastroActionPerformed
         // TODO add your handling code here:
         String arroba = txtEmail.getText();
-        String senha2 = new String (txtSenha.getPassword());
-        String senha3 = new String (txtConfirmarSenha.getPassword());
-        String nome = txtNome.getText();
-        String senha = new String (txtSenha.getPassword());
+        String senha2 = txtSenha.getText();
+        String senha3 = txtConfirmarSenha.getText();
 
         if (arroba.indexOf("@") > 0) {
             if (senha2.equals(senha3)) {
-                
-                InserirCodigoTela2 Ict2 = new InserirCodigoTela2();
-                Ict2.setVisible(true);
-                
-                InserirCodigoTela2.CaixaParaNome.setText(nome);
-                InserirCodigoTela2.CaixaParaEmail.setText(arroba);
-                InserirCodigoTela2.CaixaParaSenha.setText(senha);
-                
-                this.dispose();
+                try {
+                    
+                    String nome, email, senha;
+                    nome = txtNome.getText();
+                    email = txtEmail.getText();
+                    senha = txtSenha.getText();
+
+                    Usuario usuario = new Usuario(nome, email, senha); 
+                    
+                    UsuarioCadastroDAO ObjetoUsuarioCadastradoDAO = new UsuarioCadastroDAO();
+                    ObjetoUsuarioCadastradoDAO.cadastrar(usuario);
+
+                    PrincipalTela TP = new PrincipalTela();
+                    TP.setVisible(true);
+
+                    PrincipalTela.CaixaParaEmail.setText(email);
+
+                    this.dispose();
+
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "FRMLOGINVIEW" + e);
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Você deve escrever a mesma senha em ambas as caixas");
             }
@@ -132,18 +165,6 @@ public class CadastroTela extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Houve um erro no cadastro do seu email");
         }
     }//GEN-LAST:event_BotaoCadastroActionPerformed
-
-    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSenhaActionPerformed
-
-    private void BotaoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoVoltarActionPerformed
-        // TODO add your handling code here:
-        LoginTela Lt = new LoginTela();
-        Lt.setVisible(true);
-        
-        this.dispose();
-    }//GEN-LAST:event_BotaoVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,6 +192,7 @@ public class CadastroTela extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(CadastroTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -182,11 +204,19 @@ public class CadastroTela extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotaoCadastro;
-    private javax.swing.JButton BotaoVoltar;
-    private javax.swing.JLabel Fundo;
-    private javax.swing.JPasswordField txtConfirmarSenha;
-    public static javax.swing.JTextField txtEmail;
-    public static javax.swing.JTextField txtNome;
-    public static javax.swing.JPasswordField txtSenha;
+    public static javax.swing.JLabel CaixaParaEmail;
+    private javax.swing.JLabel EmailLabel;
+    private javax.swing.JLabel NomeLabel;
+    private javax.swing.JLabel SenhaLabel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JTextField txtConfirmarSenha;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtSenha;
     // End of variables declaration//GEN-END:variables
 }

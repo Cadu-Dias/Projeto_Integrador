@@ -1,8 +1,8 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Other/File.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Jogo;
+package com.mycompany;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,7 +14,7 @@ public class UsuarioCadastroDAO {
         //Especificar o comando
         String sql = "Insert into login (nome, senha, email) values (?, ?, ?)";
         //Abrir um conexao com o MySql
-        Connection conexao = ConnectionFactory.getConnection();
+        Connection conexao = ConnectionFactoryLogin.getConnection();
         //Preparar conexao
         PreparedStatement ps = conexao.prepareStatement(sql);
         //Substituir os placeholders (?)
