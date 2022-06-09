@@ -2,22 +2,28 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Jogo;
+package com.mycompany;
+    
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author cadub
  */
 public class ResultadoMedioTela extends javax.swing.JFrame {
-
+    
     /**
-     * Creates new form ResultadoMedioTela
+     * Creates new form TelaResultadoMedio
      */
     public ResultadoMedioTela() {
         initComponents();
+        
+        
     }
 
     /**
@@ -29,101 +35,118 @@ public class ResultadoMedioTela extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        NomeDificuldade = new javax.swing.JLabel();
         CaixaParaEmail = new javax.swing.JLabel();
         txtPontuacao = new javax.swing.JLabel();
         txtTempo = new javax.swing.JLabel();
-        BotaoLogout = new javax.swing.JButton();
         txtTempoSegundos = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        LogoDiscite = new javax.swing.JLabel();
+        TermoDiscite = new javax.swing.JLabel();
+        BotaoLogout = new javax.swing.JButton();
         BotaoHistorico = new javax.swing.JButton();
+        BotaoTrocarDificuldade = new javax.swing.JButton();
         txtConclusao = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        BotaoReiniciarQuiz = new javax.swing.JButton();
-        BotaoTrocarDificuldade = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+
+        NomeDificuldade.setText("Médio");
 
         CaixaParaEmail.setText("jLabel5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1379, 715));
         setUndecorated(true);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtPontuacao.setFont(new java.awt.Font("Eras Bold ITC", 1, 28)); // NOI18N
+        txtPontuacao.setFont(new java.awt.Font("Segoe UI", 1, 23)); // NOI18N
         txtPontuacao.setForeground(new java.awt.Color(255, 255, 255));
         txtPontuacao.setText("jLabel1");
-        getContentPane().add(txtPontuacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 290, -1));
+        getContentPane().add(txtPontuacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 280, -1));
 
-        txtTempo.setFont(new java.awt.Font("Eras Bold ITC", 1, 28)); // NOI18N
+        txtTempo.setFont(new java.awt.Font("Segoe UI", 1, 23)); // NOI18N
         txtTempo.setForeground(new java.awt.Color(255, 255, 255));
         txtTempo.setText(" 4");
-        getContentPane().add(txtTempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 30, -1));
+        getContentPane().add(txtTempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 20, -1));
 
-        BotaoLogout.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\BotãoLogout.png")); // NOI18N
-        BotaoLogout.setBorder(null);
+        txtTempoSegundos.setFont(new java.awt.Font("Segoe UI", 1, 23)); // NOI18N
+        txtTempoSegundos.setForeground(new java.awt.Color(255, 255, 255));
+        txtTempoSegundos.setText("00");
+        getContentPane().add(txtTempoSegundos, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 60, -1));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        LogoDiscite.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\Icone Laranja Discite (2) (1).png")); // NOI18N
+        jPanel1.add(LogoDiscite, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
+
+        TermoDiscite.setFont(new java.awt.Font("MV Boli", 0, 30)); // NOI18N
+        TermoDiscite.setForeground(new java.awt.Color(255, 102, 0));
+        TermoDiscite.setText("iscite");
+        jPanel1.add(TermoDiscite, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 80, -1));
+
+        BotaoLogout.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\OneDrive\\Imagens\\Saved Pictures\\IconeLogout.png")); // NOI18N
+        BotaoLogout.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         BotaoLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotaoLogoutActionPerformed(evt);
             }
         });
-        getContentPane().add(BotaoLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 630, 80, 80));
+        jPanel1.add(BotaoLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, 110, 40));
 
-        txtTempoSegundos.setFont(new java.awt.Font("Eras Bold ITC", 1, 28)); // NOI18N
-        txtTempoSegundos.setForeground(new java.awt.Color(255, 255, 255));
-        txtTempoSegundos.setText("00");
-        getContentPane().add(txtTempoSegundos, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, 60, -1));
-
-        BotaoHistorico.setBackground(new java.awt.Color(94, 83, 239));
-        BotaoHistorico.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\BotãoRanking.png")); // NOI18N
-        BotaoHistorico.setBorder(null);
+        BotaoHistorico.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\OneDrive\\Imagens\\Saved Pictures\\IconeHistórico.png")); // NOI18N
+        BotaoHistorico.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         BotaoHistorico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotaoHistoricoActionPerformed(evt);
             }
         });
-        getContentPane().add(BotaoHistorico, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 410, 340, 100));
+        jPanel1.add(BotaoHistorico, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 250, 60));
 
-        txtConclusao.setFont(new java.awt.Font("Eras Bold ITC", 1, 32)); // NOI18N
-        txtConclusao.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(txtConclusao, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 710, 80));
-
-        jLabel2.setFont(new java.awt.Font("Eras Bold ITC", 1, 28)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Seu tempo:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Eras Bold ITC", 1, 28)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Sua pontuação:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 270, -1));
-
-        jLabel4.setFont(new java.awt.Font("Eras Bold ITC", 1, 28)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText(":");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, 20, -1));
-
-        BotaoReiniciarQuiz.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\BotãoReiniciarQuizMédio.png")); // NOI18N
-        BotaoReiniciarQuiz.setBorder(null);
-        BotaoReiniciarQuiz.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoReiniciarQuizActionPerformed(evt);
-            }
-        });
-        getContentPane().add(BotaoReiniciarQuiz, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 580, 340, 100));
-
-        BotaoTrocarDificuldade.setBackground(new java.awt.Color(94, 83, 239));
-        BotaoTrocarDificuldade.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\BotãoTrocarDificuldade.png")); // NOI18N
-        BotaoTrocarDificuldade.setBorder(null);
+        BotaoTrocarDificuldade.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\OneDrive\\Imagens\\Saved Pictures\\Botão Trocar Dificuldade.png")); // NOI18N
+        BotaoTrocarDificuldade.setBorder(new javax.swing.border.MatteBorder(null));
         BotaoTrocarDificuldade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotaoTrocarDificuldadeActionPerformed(evt);
             }
         });
-        getContentPane().add(BotaoTrocarDificuldade, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 260, 340, 100));
+        jPanel1.add(BotaoTrocarDificuldade, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 250, 60));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\1253QUANTUMVM.UNRARMETRO_ckbnxvahp5f44!App\\Extracted\\Final_Media.png")); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 710));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, 290, 410));
+
+        txtConclusao.setFont(new java.awt.Font("Segoe UI", 1, 27)); // NOI18N
+        txtConclusao.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(txtConclusao, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 540, 51));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 23)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Seu tempo:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 23)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Sua pontuação:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 170, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 23)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText(":");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, 20, -1));
+
+        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\OneDrive\\Imagens\\Saved Pictures\\Botão Reiniciar Quiz.png")); // NOI18N
+        jButton1.setBorder(new javax.swing.border.MatteBorder(null));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 260, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\OneDrive\\Imagens\\Saved Pictures\\Azul Laranja.jpg")); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 410));
 
         pack();
         setLocationRelativeTo(null);
@@ -138,11 +161,11 @@ public class ResultadoMedioTela extends javax.swing.JFrame {
 
     private void BotaoHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoHistoricoActionPerformed
         // TODO add your handling code here:
-        RankingTela Th = new RankingTela();
+        HistoricoTela Th = new HistoricoTela();
         Th.setVisible(true);
 
         String pegarEmail = CaixaParaEmail.getText();
-        RankingTela.CaixaParaEmail.setText(pegarEmail);
+        HistoricoTela.CaixaParaEmail.setText(pegarEmail);
 
         this.dispose();
     }//GEN-LAST:event_BotaoHistoricoActionPerformed
@@ -151,28 +174,23 @@ public class ResultadoMedioTela extends javax.swing.JFrame {
         // TODO add your handling code here:
         DificuldadeTela Td = new DificuldadeTela();
         Td.setVisible(true);
-
+        
         String pegarEmail = CaixaParaEmail.getText();
         DificuldadeTela.CaixaParaEmail.setText(pegarEmail);
-
+        
         this.dispose();
     }//GEN-LAST:event_BotaoTrocarDificuldadeActionPerformed
 
-    private void BotaoReiniciarQuizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoReiniciarQuizActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        QuestoesMediasTela Qm;
-        try {
-            Qm = new QuestoesMediasTela();
-            Qm.setVisible(true);
-            
-            String pegarEmail = CaixaParaEmail.getText();
-            QuestoesMediasTela.CaixaParaEmail.setText(pegarEmail);
-        } catch (Exception ex) {
-            Logger.getLogger(ResultadoMedioTela.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+        QuestoesMediasTela Qm = new QuestoesMediasTela();
+        Qm.setVisible(true);
+        
+        String pegarEmail = CaixaParaEmail.getText();
+        QuestoesMediasTela.CaixaParaEmail.setText(pegarEmail);
+        
         this.dispose();
-    }//GEN-LAST:event_BotaoReiniciarQuizActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,6 +218,7 @@ public class ResultadoMedioTela extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ResultadoMedioTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -212,13 +231,17 @@ public class ResultadoMedioTela extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotaoHistorico;
     private javax.swing.JButton BotaoLogout;
-    private javax.swing.JButton BotaoReiniciarQuiz;
     private javax.swing.JButton BotaoTrocarDificuldade;
     public static javax.swing.JLabel CaixaParaEmail;
+    private javax.swing.JLabel LogoDiscite;
+    private javax.swing.JLabel NomeDificuldade;
+    private javax.swing.JLabel TermoDiscite;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     public static javax.swing.JLabel txtConclusao;
     public static javax.swing.JLabel txtPontuacao;
     public static javax.swing.JLabel txtTempo;

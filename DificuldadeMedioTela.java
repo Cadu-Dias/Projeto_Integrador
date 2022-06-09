@@ -2,26 +2,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Jogo;
+package com.mycompany;
 
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
  * @author cadub
  */
 public class DificuldadeMedioTela extends javax.swing.JFrame {
-    List <Pergunta> perguntasMedias;
+    String[] questions = {"Que tipo de estrutura o comando Switch faz parte?","Qual o uso do comando break em Java?", "Quantos comandos de tomadas de decisões existem no Java?", "O que são strings?", "Quantos comandos de laços de repetições existem no Java?"};
+    String[] [] options ={{"Uma estrutura de troca", "Uma estrutura de finalidade", "Uma estrutura de alternativa", "Uma estrutura de decisões", "Uma estrutura de repetição", "E"}, {"O comando break é usado para acabar com o programa", "O comando break é usado para quebrar as falhas", "O comando break é usado para facilitar a existência de alguns loops e quebrar com algumas falhas existentes dentro do sistema", "O comando break é usado para criar loops e continuar com a sequência do programa", "O comando break é usado para sair de loops", "E"}, {"Nenhuma", "2", "5", "1", "4", "B"}, {"Strings são códigos usados para conseguirmos fazer o programa de Java rodar", "String são linhas", "String estão dentro da classe do programa de Java", "String é uma forma de classificar varíaveis em que atribui-se texto", "Strings são objetos que manipulamos utilizando variáveis de referência", "E"}, {"Nenhuma", "6", "2", "1", "3", "C"}};
+    int index = 0;
+    
+    
     /**
-     * Creates new form DificuldadeMedioTela
+     * Creates new form TelaDificuldadeMedio
      */
-    public DificuldadeMedioTela() throws Exception {
+    public DificuldadeMedioTela() {
         initComponents();
         
-        perguntasMedias = new QuestoesDAOMedio().obterPerguntas();
-        quantidadeQuestoes.setText(String.valueOf(perguntasMedias.size()));
+        
     }
 
     /**
@@ -34,88 +35,109 @@ public class DificuldadeMedioTela extends javax.swing.JFrame {
     private void initComponents() {
 
         CaixaParaEmail = new javax.swing.JLabel();
-        BotaoStart = new javax.swing.JButton();
-        BotaoVoltar = new javax.swing.JButton();
-        quantidadeQuestoes = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        fundo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        BotãoVoltar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        Fundo = new javax.swing.JLabel();
 
-        CaixaParaEmail.setText("jLabel1");
+        CaixaParaEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        CaixaParaEmail.setText("jLabel8");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BotaoStart.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\BotãoStartMédio.png")); // NOI18N
-        BotaoStart.setBorder(null);
-        BotaoStart.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Dificuldade Média");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, -1, -1));
+
+        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\OneDrive\\Imagens\\Saved Pictures\\4842316-start-icon-in-trendy-long-shadow-style-isolated-on-soft-blue-background-grátis-vetor.jpg")); // NOI18N
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BotaoStartMouseClicked(evt);
+                jButton3MouseClicked(evt);
             }
         });
-        BotaoStart.addActionListener(new java.awt.event.ActionListener() {
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoStartActionPerformed(evt);
+                jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(BotaoStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 570, 320, 80));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, -1, -1));
 
-        BotaoVoltar.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\BotãoVoltar3.png")); // NOI18N
-        BotaoVoltar.setBorder(null);
-        BotaoVoltar.addActionListener(new java.awt.event.ActionListener() {
+        BotãoVoltar.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\Botão-Voltar.png")); // NOI18N
+        BotãoVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoVoltarActionPerformed(evt);
+                BotãoVoltarActionPerformed(evt);
             }
         });
-        getContentPane().add(BotaoVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 110, 80));
+        getContentPane().add(BotãoVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 150, 60));
 
-        quantidadeQuestoes.setFont(new java.awt.Font("Eras Bold ITC", 0, 22)); // NOI18N
-        quantidadeQuestoes.setForeground(new java.awt.Color(255, 255, 255));
-        quantidadeQuestoes.setText("15");
-        getContentPane().add(quantidadeQuestoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 260, 40, -1));
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 23)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Instruções:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\FundoLaranja.png")); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 230, 40, 70));
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("- Este Quiz apresenta 5 perguntas no total");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, -1, -1));
 
-        fundo.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\1253QUANTUMVM.UNRARMETRO_ckbnxvahp5f44!App\\Extracted\\Imagens feitas\\Media.png")); // NOI18N
-        getContentPane().add(fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("- Você tera 5 minutos para respondê-la");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, -1, -1));
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("- Para cada acerto você obterá 3 pontos");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("- Para cada erro você perderá 2 pontos");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, -1, 20));
+
+        Fundo.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\OneDrive\\Imagens\\Saved Pictures\\Azul Laranja.jpg")); // NOI18N
+        getContentPane().add(Fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 420));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BotaoStartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotaoStartMouseClicked
+    private void BotãoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotãoVoltarActionPerformed
         // TODO add your handling code here:
- 
-    }//GEN-LAST:event_BotaoStartMouseClicked
-
-    private void BotaoStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoStartActionPerformed
-        // TODO add your handling code here:
-        QuestoesMediasTela QMT;
-        try {
-            QMT = new QuestoesMediasTela();
-            QMT.setVisible(true);
-            
-            String pegarEmail = CaixaParaEmail.getText();
-            QuestoesMediasTela.CaixaParaEmail.setText(pegarEmail);
-            
-        } catch (Exception ex) {
-            Logger.getLogger(DificuldadeMedioTela.class.getName()).log(Level.SEVERE, null, ex);
-        }
+         DificuldadeTela TD = new DificuldadeTela();
+        TD.setVisible(true);
         
         this.dispose();
-    }//GEN-LAST:event_BotaoStartActionPerformed
+    }//GEN-LAST:event_BotãoVoltarActionPerformed
 
-    private void BotaoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoVoltarActionPerformed
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
-        DificuldadeTela Dt = new DificuldadeTela();
-        Dt.setVisible(true);
+        
+    }//GEN-LAST:event_jButton3MouseClicked
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        QuestoesMediasTela QM = new QuestoesMediasTela();
+        QM.setVisible(true);
+        
         String pegarEmail = CaixaParaEmail.getText();
-        DificuldadeTela.CaixaParaEmail.setText(pegarEmail);
-
+        QuestoesMediasTela.CaixaParaEmail.setText(pegarEmail);
+        
         this.dispose();
-    }//GEN-LAST:event_BotaoVoltarActionPerformed
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,25 +165,26 @@ public class DificuldadeMedioTela extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(DificuldadeMedioTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new DificuldadeMedioTela().setVisible(true);
-                } catch (Exception ex) {
-                    Logger.getLogger(DificuldadeMedioTela.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new DificuldadeMedioTela().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotaoStart;
-    private javax.swing.JButton BotaoVoltar;
+    private javax.swing.JButton BotãoVoltar;
     public static javax.swing.JLabel CaixaParaEmail;
-    private javax.swing.JLabel fundo;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel quantidadeQuestoes;
+    private javax.swing.JLabel Fundo;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
 }

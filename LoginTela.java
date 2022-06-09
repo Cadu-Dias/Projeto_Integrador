@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Jogo;
+package com.mycompany;
 
 import javax.swing.JOptionPane;
 
@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 public class LoginTela extends javax.swing.JFrame {
 
     /**
-     * Creates new form LoginTela
+     * Creates new form TelaLogin
      */
     public LoginTela() {
         initComponents();
@@ -28,137 +28,174 @@ public class LoginTela extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BotaoLogin = new javax.swing.JButton();
+        LabelLogin = new javax.swing.JLabel();
+        LabelEmail = new javax.swing.JLabel();
+        LabelSenha = new javax.swing.JLabel();
         CaixaDeTextoEmail = new javax.swing.JTextField();
-        CaixaDeTextoSenha = new javax.swing.JPasswordField();
+        BotãoLogin = new javax.swing.JButton();
         BotãoCadastro = new javax.swing.JButton();
-        BotaoEsqueceuSenha = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        CaixaDeTextoSenha = new javax.swing.JPasswordField();
         BotaoSair = new javax.swing.JButton();
+        BotaoEsquecerSenha = new javax.swing.JButton();
         Fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BotaoLogin.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\BotãoLogin.png")); // NOI18N
-        BotaoLogin.setBorder(null);
-        BotaoLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoLoginActionPerformed(evt);
+        LabelLogin.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
+        LabelLogin.setForeground(new java.awt.Color(255, 255, 255));
+        LabelLogin.setText("Login");
+        getContentPane().add(LabelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 30, -1, -1));
+
+        LabelEmail.setFont(new java.awt.Font("Segoe UI", 1, 23)); // NOI18N
+        LabelEmail.setForeground(new java.awt.Color(255, 255, 255));
+        LabelEmail.setText("Email:");
+        getContentPane().add(LabelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, -1, -1));
+
+        LabelSenha.setFont(new java.awt.Font("Segoe UI", 1, 23)); // NOI18N
+        LabelSenha.setForeground(new java.awt.Color(255, 255, 255));
+        LabelSenha.setText("Senha:");
+        getContentPane().add(LabelSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, -1, -1));
+        getContentPane().add(CaixaDeTextoEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 110, 190, -1));
+
+        BotãoLogin.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\OneDrive\\Imagens\\Saved Pictures\\Botão de Login.png")); // NOI18N
+        BotãoLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotãoLoginMouseClicked(evt);
             }
         });
-        getContentPane().add(BotaoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 590, 360, 80));
-
-        CaixaDeTextoEmail.setBackground(new java.awt.Color(95, 84, 242));
-        CaixaDeTextoEmail.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        CaixaDeTextoEmail.setForeground(new java.awt.Color(255, 255, 255));
-        CaixaDeTextoEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        CaixaDeTextoEmail.addActionListener(new java.awt.event.ActionListener() {
+        BotãoLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CaixaDeTextoEmailActionPerformed(evt);
+                BotãoLoginActionPerformed(evt);
             }
         });
-        getContentPane().add(CaixaDeTextoEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, 580, 60));
+        getContentPane().add(BotãoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 220, 160, 40));
 
-        CaixaDeTextoSenha.setBackground(new java.awt.Color(95, 84, 242));
-        CaixaDeTextoSenha.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        CaixaDeTextoSenha.setForeground(new java.awt.Color(255, 255, 255));
-        CaixaDeTextoSenha.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 0, 0, 0, new java.awt.Color(0, 0, 0)));
-        getContentPane().add(CaixaDeTextoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, 580, 60));
-
-        BotãoCadastro.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\BotaoCadastrar.png")); // NOI18N
-        BotãoCadastro.setBorder(null);
+        BotãoCadastro.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\OneDrive\\Imagens\\Saved Pictures\\Botão de Registrar.png")); // NOI18N
         BotãoCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotãoCadastroActionPerformed(evt);
             }
         });
-        getContentPane().add(BotãoCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(885, 395, -1, 60));
+        getContentPane().add(BotãoCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 270, 160, 40));
 
-        BotaoEsqueceuSenha.setBackground(new java.awt.Color(239, 164, 83));
-        BotaoEsqueceuSenha.setFont(new java.awt.Font("Eras Bold ITC", 0, 22)); // NOI18N
-        BotaoEsqueceuSenha.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\BotãoEsqueciSenha.png")); // NOI18N
-        BotaoEsqueceuSenha.setBorder(null);
-        BotaoEsqueceuSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoEsqueceuSenhaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(BotaoEsqueceuSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 540, 200, 30));
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\Icone Laranja Discite (1).png")); // NOI18N
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, -1, -1));
 
-        BotaoSair.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\BotãoLogout.png")); // NOI18N
-        BotaoSair.setBorder(null);
+        jLabel8.setFont(new java.awt.Font("Eras Demi ITC", 1, 36)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(204, 102, 0));
+        jLabel8.setText("Project Discite");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, -1, -1));
+        getContentPane().add(CaixaDeTextoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 170, 190, -1));
+
+        BotaoSair.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\OneDrive\\Imagens\\Saved Pictures\\Botão Sair.png")); // NOI18N
+        BotaoSair.setBorder(new javax.swing.border.MatteBorder(null));
         BotaoSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotaoSairActionPerformed(evt);
             }
         });
-        getContentPane().add(BotaoSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 630, 80, 80));
+        getContentPane().add(BotaoSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(815, 370, 80, 40));
 
-        Fundo.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\Downloads\\1253QUANTUMVM.UNRARMETRO_ckbnxvahp5f44!App\\Extracted\\Imagens feitas\\LOGIN.png")); // NOI18N
-        getContentPane().add(Fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        BotaoEsquecerSenha.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\OneDrive\\Imagens\\Saved Pictures\\Icone Senha.png")); // NOI18N
+        BotaoEsquecerSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotaoEsquecerSenhaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BotaoEsquecerSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 370, 190, 40));
+
+        Fundo.setIcon(new javax.swing.ImageIcon("C:\\Users\\cadub\\OneDrive\\Imagens\\Saved Pictures\\Azul Laranja.jpg")); // NOI18N
+        getContentPane().add(Fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 430));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BotãoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotãoCadastroActionPerformed
-        // TODO add your handling code here:
-        CadastroTela Ct = new CadastroTela();
-        Ct.setVisible(true);
-
-        this.dispose();
-    }//GEN-LAST:event_BotãoCadastroActionPerformed
-
-    private void BotaoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoLoginActionPerformed
-        // TODO add your handling code here:
+    private void BotãoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotãoLoginActionPerformed
         try {
             
-            String email, senha;
-            email = CaixaDeTextoEmail.getText();
-            senha = new String (CaixaDeTextoSenha.getPassword());
-
-            Usuario usuario = new Usuario(email, senha);
-
-            UsuarioDAO ObjetoUsuarioDAO = new UsuarioDAO();
-            boolean rsusuarioDAO = ObjetoUsuarioDAO.existe(usuario);
-
-            if (rsusuarioDAO){
-
-                PrincipalTela TP = new PrincipalTela();
-                TP.setVisible(true);
-
-                PrincipalTela.CaixaParaEmail.setText(email);
-
-            this.dispose();
-
-            }
-            else {
-                JOptionPane.showMessageDialog(null, "Email ou Senha Inválidos");
-            }
-
+        String email, senha;
+        email = CaixaDeTextoEmail.getText();
+        senha = new String (CaixaDeTextoSenha.getPassword());
+        
+        Usuario usuario = new Usuario(email, senha);
+        
+        UsuarioDAO ObjetoUsuarioDAO = new UsuarioDAO();
+        boolean rsusuarioDAO = ObjetoUsuarioDAO.existe(usuario);
+        
+        if (rsusuarioDAO){
+         
+            PrincipalTela TP = new PrincipalTela();
+            TP.setVisible(true);
+            
+            PrincipalTela.CaixaParaEmail.setText(email);
+        
+        this.dispose();
+            
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Email ou Senha Inválidos");
+        }
+        
+        
         }
         catch (Exception e) {
             JOptionPane.showMessageDialog(null, "FRMLOGINVIEW" + e);
         }
-    }//GEN-LAST:event_BotaoLoginActionPerformed
+    }//GEN-LAST:event_BotãoLoginActionPerformed
 
-    private void CaixaDeTextoEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CaixaDeTextoEmailActionPerformed
+    private void BotãoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotãoCadastroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CaixaDeTextoEmailActionPerformed
+        CadastroTela TC = new CadastroTela();
+        TC.setVisible(true);
+        
+        this.dispose();
+    }//GEN-LAST:event_BotãoCadastroActionPerformed
+
+    private void BotãoLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotãoLoginMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_BotãoLoginMouseClicked
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        
+        
+        
+    }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        
+        
+        
+    }//GEN-LAST:event_formWindowClosed
 
     private void BotaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoSairActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_BotaoSairActionPerformed
 
-    private void BotaoEsqueceuSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoEsqueceuSenhaActionPerformed
+    private void BotaoEsquecerSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoEsquecerSenhaActionPerformed
         // TODO add your handling code here:
-        TrocarSenhaTela Tst = new TrocarSenhaTela();
-        Tst.setVisible(true);
+        VerificacaoEmailTela VET = new VerificacaoEmailTela();
+        VET.setVisible(true);
         
         this.dispose();
-    }//GEN-LAST:event_BotaoEsqueceuSenhaActionPerformed
+    }//GEN-LAST:event_BotaoEsquecerSenhaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,6 +223,7 @@ public class LoginTela extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(LoginTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -196,12 +234,17 @@ public class LoginTela extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotaoEsqueceuSenha;
-    private javax.swing.JButton BotaoLogin;
+    private javax.swing.JButton BotaoEsquecerSenha;
     private javax.swing.JButton BotaoSair;
     private javax.swing.JButton BotãoCadastro;
+    private javax.swing.JButton BotãoLogin;
     private javax.swing.JTextField CaixaDeTextoEmail;
     private javax.swing.JPasswordField CaixaDeTextoSenha;
     private javax.swing.JLabel Fundo;
+    private javax.swing.JLabel LabelEmail;
+    private javax.swing.JLabel LabelLogin;
+    private javax.swing.JLabel LabelSenha;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
 }
