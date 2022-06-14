@@ -127,7 +127,7 @@ public class InserirCodigoTela2 extends javax.swing.JFrame {
     private void botaoConfirmarCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConfirmarCodigoActionPerformed
         // TODO add your handling code here:
        String codigo1 = txtCodigo.getText();
-
+        int pontuacaoTotal = 0;
         if (codigo1.equals(String.valueOf(codigo))) {
             try {
                     
@@ -136,7 +136,7 @@ public class InserirCodigoTela2 extends javax.swing.JFrame {
                     email = CaixaParaEmail.getText();
                     senha = CaixaParaSenha.getText();
 
-                    Usuario usuario = new Usuario(nome, email, senha); 
+                    Usuario usuario = new Usuario(nome, email, senha, pontuacaoTotal); 
                     
                     UsuarioCadastroDAO ObjetoUsuarioCadastradoDAO = new UsuarioCadastroDAO();
                     ObjetoUsuarioCadastradoDAO.cadastrar(usuario);
